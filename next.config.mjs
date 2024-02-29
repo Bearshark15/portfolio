@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/Bearshark15.github.io',
-  output: 'export',
   reactStrictMode: true,
+  output: 'export',
+  images: {
+    loader: 'akamai',
+    path: "",
+  }
 };
 
 export default nextConfig;
