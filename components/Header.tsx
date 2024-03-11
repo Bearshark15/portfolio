@@ -1,3 +1,5 @@
+"use client"
+
 import Container from "@/components/container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

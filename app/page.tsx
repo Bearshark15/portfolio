@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Container from "@/components/container";
@@ -9,25 +8,6 @@ import resume from "@/ts/resume";
 import ResumeEntryList from "@/components/ResumeEntryList";
 
 const inter = Inter({ subsets: ["latin"] });
-
-interface SkeletonProps {
-    project: {
-        key: number;
-        title: string;
-        description: string;
-        thumbnail: string;
-    }
-}
-
-const Skeleton: React.FC<SkeletonProps> = (project) => (
-    <div className="relative flex w-full h-full rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
-        <Image
-            src={project.project.thumbnail}
-            alt={project.project.title}
-            fill={true}
-            className="rounded-xl" />
-    </div>
-);
 
 export default function Home() {
     return (
