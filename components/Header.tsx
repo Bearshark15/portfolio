@@ -66,7 +66,7 @@ const Header = () => {
                         <SheetContent side={"right"}>
                             <nav className={"flex flex-col gap-4"}>
                                 {routs.map((route, index) => (
-                                    <SheetClose asChild>
+                                    <SheetClose asChild key={index}>
                                         <Button asChild variant={"ghost"} key={index}>
                                             <Link href={route.href} key={index} className={"text-sm font-medium transition-colors"}>
                                                 {route.label}
