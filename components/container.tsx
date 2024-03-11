@@ -1,12 +1,12 @@
 import React from "react";
 
 interface ContainerProps {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const Container: React.FC<ContainerProps> = ({ children }) => {
     return (
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto w-full h-full max-w-7xl">
             {children}
         </div>
     );
