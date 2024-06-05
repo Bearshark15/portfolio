@@ -6,7 +6,9 @@ import Container from "@/components/container";
 import { Braces, GraduationCapIcon } from "lucide-react";
 import ProjectList from "@/components/ProjectList";
 import projects from "@/ts/projects";
-import resume from "@/ts/resume";
+import education from "@/ts/education";
+import skills from "@/ts/skills";
+import workExperience from "@/ts/experience";
 import ResumeEntryList from "@/components/ResumeEntryList";
 import Hero from "@/components/Hero";
 
@@ -32,7 +34,8 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Braces className={"h-16 w-16"}></Braces>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>Skills</h1>
-                                    <p style={{color: "hsl(208, 8%, 70%)"}}>Unity, Unreal,<br /> C#, C++, Java</p>
+                                    <p style={{color: "hsl(208, 8%, 70%)"}}>Unity, Unreal, Git, Plastic SCM, C#, C++, <br /> Java,
+                                        Next.JS, Html, CSS</p>
                                 </div>
                             </div>
                             <div className={"m-10 p-5 border rounded-xl w-56 h-72 z-10 backdrop-blur-xl"}
@@ -53,16 +56,39 @@ export default function Home() {
                     </Container>
                 </div>
                 <div className={"border-t shadow"}>
-                    <Container>
-                        <div className="w-full h-[1000px]">
+                        <div className="w-full">
                             <div className={"mb-10 mt-10"}>
+                                <Container>
                                 <h1 id={"resume"} className={"text-4xl font-bold"}>Jacob Bekele Jansson</h1>
                                 <p>Game Programmer</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className={"w-1/2"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                    qui officia deserunt mollit anim id est laborum.</p>
+                                </Container>
                             </div>
-                            <ResumeEntryList entries={resume} />
+                            <div>
+                                <Container>
+                                    <h1 className={"text-3xl font-bold mb-5"}>Skills</h1>
+                                    <ResumeEntryList entries={skills}/>
+                                </Container>
+                            </div>
+                            <div style={{background: "rgb(240, 244, 247)"}}>
+                                <Container>
+                                    <h1 className={"text-3xl font-bold mb-5"} >Education</h1>
+                                    <ResumeEntryList entries={education}/>
+                                </Container>
+                            </div>
+                            <div>
+                                <Container>
+                                    <h1 className={"text-3xl font-bold mb-5"}>Work Experience</h1>
+                                    <ResumeEntryList entries={workExperience}/>
+                                </Container>
+                            </div>
                         </div>
-                    </Container>
+
                 </div>
             </main>
         </NextUIProvider>
