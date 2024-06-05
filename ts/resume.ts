@@ -1,4 +1,3 @@
-import exp from "constants";
 import { ResumeEntry } from "./types";
 
 const Resume: ResumeEntry[] = [
@@ -20,7 +19,7 @@ const Resume: ResumeEntry[] = [
         key: 3,
         title: "San Diego State University",
         subtitle: "Exchange Student in Computer Science",
-        description: "I studied software development with a focus on game development. I learned programming in C# and how to use Unity and Unreal Engine.",
+        description: "During my studies at Uppsala University, I spent a semester at San Diego State University as an exchange student. I took courses in Computer Science and Java programming.",
         date: "2023-2023",
     },
 ];

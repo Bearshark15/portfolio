@@ -4,17 +4,17 @@ import { Project } from "@/ts/types";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
-import { usePathname } from 'next/navigation';
 
 interface ProjectCardProps {
     project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-    const pathname = usePathname();
-    console.log(pathname);
     return (
-        <Link href={project.pageLink} className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg"}>
+        <Link
+            href={project.pageLink}
+            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg"}>
+            
             <Card className={"rounded-lg border-2"}>
                 <CardContent className={"pt-4"}>
                     <div className={"aspect-square relative bg-foreground/5 dark:bg-background rounded-lg"}>

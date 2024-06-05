@@ -7,7 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { useState, useEffect } from "react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
-import { DropdownMenuIcon } from "@radix-ui/react-icons";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const routs = [
     {
@@ -45,7 +45,7 @@ const Header = () => {
     });
 
     return (
-        <header id={"navbar"} className={`${scrollY > 1 ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity sticky top-0 sm:flex sm:justify-between py-3 px-4 border-b backdrop-blur-xl bg-white/30 z-50`}>
+        <header id={"navbar"} className={`${scrollY > 1 ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity sticky top-0 sm:flex sm:justify-between py-3 px-4 border-b backdrop-blur-xl bg-white z-50`}>
             <Container>
                 <div className={"px-4 sm:px-6 lg:px-8 flex h-12 items-center justify-between w-full"}>
                     <div className={"flex items-center justify-between"}>
@@ -63,7 +63,7 @@ const Header = () => {
                     </div>
                     <Sheet>
                         <SheetTrigger>
-                            <DropdownMenuIcon className={"h-6 w-6 md:hidden"} />
+                            <Bars3Icon className={"h-6 w-6 lg:hidden"} />
                         </SheetTrigger>
                         <SheetContent side={"right"}>
                             <nav className={"flex flex-col gap-4"}>
@@ -79,7 +79,7 @@ const Header = () => {
                             </nav>
                         </SheetContent>
                     </Sheet>
-                    <nav className={"mx-6 lg:flex items-center space-x-4 lg:space-x-6 md:block hidden"}>
+                    <nav className={"mx-6 items-center space-x-4 lg:space-x-6 hidden lg:flex"}>
                         {routs.map((route, index) => (
                             <Button asChild variant={"ghost"} key={index}>
                                 <Link href={route.href} key={index} className={"text-sm font-medium transition-colors"}>

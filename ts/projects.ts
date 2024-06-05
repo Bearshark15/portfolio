@@ -87,6 +87,16 @@ const Projects: Project[] = [
         images: [""],
         team: [],
     },
+    {
+        key: 6,
+        title: "R:EON",
+        shortDescription: "First person platforming game.",
+        description: "",
+        pageLink: "/projects/overstay",
+        thumbnail: "/reon/SS4.png",
+        images: [""],
+        team: [],
+    },
 ];
 
 export default Projects;
