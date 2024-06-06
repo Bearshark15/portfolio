@@ -1,6 +1,6 @@
 "use client"
 
-import Container from "@/components/container";
+import Container from "@/components/Container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
@@ -45,7 +45,7 @@ const Header = () => {
     });
 
     return (
-        <header id={"navbar"} className={`${scrollY > 1 ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity sticky top-0 sm:flex sm:justify-between py-3 px-4 border-b backdrop-blur-xl bg-white z-50`}>
+        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 px-4 border-b backdrop-blur-xl bg-white z-50`}>
             <Container>
                 <div className={"px-4 sm:px-6 lg:px-8 flex h-12 items-center justify-between w-full"}>
                     <div className={"flex items-center justify-between"}>
@@ -65,7 +65,7 @@ const Header = () => {
                         <SheetTrigger>
                             <Bars3Icon className={"h-6 w-6 lg:hidden"} />
                         </SheetTrigger>
-                        <SheetContent side={"right"}>
+                        <SheetContent side={"right"} className={"bg-white"}>
                             <nav className={"flex flex-col gap-4"}>
                                 {routs.map((route, index) => (
                                     <SheetClose asChild key={index}>

@@ -8,7 +8,7 @@ interface ResumeEntryCardProps {
 
 const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
     return (
-        <section className={"mb-10"}>
+        <section className={"mt-10"}>
             <div>
                 <div className={"flex justify-between"}>
                     <h1 className={"text-2xl font-bold"}>{entry.title}</h1>
@@ -17,7 +17,7 @@ const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
                     </div>
                 </div>
                 <p className={"text-gray-400"}>{entry.subtitle}</p>
-                <p className={"lg:w-1/2 w-10/12"}>{entry.description}</p>
+                <p className={"lg:w-1/2 w-full"}>{entry.description}</p>
             </div>
         </section>
     )

@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
-import Container from "@/components/container";
+import Container from "@/components/Container";
 import { Braces, GraduationCapIcon } from "lucide-react";
 import ProjectList from "@/components/ProjectList";
 import projects from "@/ts/projects";
@@ -49,46 +49,50 @@ export default function Home() {
                         </div>
                     </Container>
                 </div>
-                <div className={"bg-grid-small-black/[0.2]"}>
+                <div>
                     <Container>
                         <h1 id="portfolio" className={"text-4xl font-bold text-center p-20"}>Portfolio</h1>
                         <ProjectList projects={projects} />
                     </Container>
                 </div>
                 <div className={"border-t shadow"}>
-                        <div className="w-full">
-                            <div className={"mb-10 mt-10"}>
-                                <Container>
-                                <h1 id={"resume"} className={"text-4xl font-bold"}>Jacob Bekele Jansson</h1>
+                    <div className="w-full">
+                        <div className={"mb-10 mt-10 px-5 lg:px-0"}>
+                            <Container>
+                                <h1 className={"text-4xl font-bold mb-5"}>About Me</h1>
+                                <h1 id={"resume"} className={"text-3xl font-bold"}>Jacob Bekele Jansson</h1>
                                 <p>Game Programmer</p>
-                                <p className={"w-1/2"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                <p className={"lg:w-1/2"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat.
                                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                    culpa
                                     qui officia deserunt mollit anim id est laborum.</p>
-                                </Container>
-                            </div>
-                            <div>
-                                <Container>
-                                    <h1 className={"text-3xl font-bold mb-5"}>Skills</h1>
-                                    <ResumeEntryList entries={skills}/>
-                                </Container>
-                            </div>
-                            <div style={{background: "rgb(240, 244, 247)"}}>
-                                <Container>
-                                    <h1 className={"text-3xl font-bold mb-5"} >Education</h1>
-                                    <ResumeEntryList entries={education}/>
-                                </Container>
-                            </div>
-                            <div>
-                                <Container>
-                                    <h1 className={"text-3xl font-bold mb-5"}>Work Experience</h1>
-                                    <ResumeEntryList entries={workExperience}/>
-                                </Container>
-                            </div>
+                            </Container>
                         </div>
-
+                        <div style={{background: "rgb(240, 244, 247)"}} className={"py-5 px-5 lg:px-0"}>
+                            <Container>
+                                <h1 className={"text-3xl font-bold"}>Skills</h1>
+                                <ResumeEntryList entries={skills}/>
+                            </Container>
+                        </div>
+                        <div className={"py-5 px-5 lg:px-0"}>
+                            <Container>
+                                <h1 className={"text-3xl font-bold"} >Education</h1>
+                                <ResumeEntryList entries={education}/>
+                            </Container>
+                        </div>
+                        <div style={{background: "rgb(240, 244, 247)"}} className={"py-5 px-5 lg:px-0"}>
+                            <Container>
+                                <h1 className={"text-3xl font-bold"}>Work Experience</h1>
+                                <ResumeEntryList entries={workExperience}/>
+                            </Container>
+                        </div>
+                    </div>
                 </div>
             </main>
         </NextUIProvider>

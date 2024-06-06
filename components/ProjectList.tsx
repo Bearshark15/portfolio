@@ -1,5 +1,6 @@
 import { Project } from "@/ts/types";
 import ProjectCard from "./ProjectCard";
+import React from "react";
 
 interface ProjectListProps {
     projects: Project[];
