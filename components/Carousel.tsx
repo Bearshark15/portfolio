@@ -16,10 +16,14 @@ const Carousel: React.FC<CarouselProps> = ({ images}) => {
     return (
         <div className={"mx-auto w-full h-full"}>
             <div className={"embla"} ref={viewportRef}>
-                <div className={"embla__container h-full"}>
-                    {images && images.map((image, index) => (
-                        <div key={index} className={"embla__slide flex items-center justify-center h-full w-full"}>
-                            <img src={image} alt={"carousel"} className={"w-full h-full object-fill"} />
+                <div className={"embla__container"}>
+                    {images.map((image, index) => (
+                        <div key={index} className={"embla__slide flex items-center justify-center"}>
+                            <div className={"w-full h-full"} style={{
+                                backgroundImage: `url(${image})`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat"}}/>
                         </div>
                     ))}
                 </div>

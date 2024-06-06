@@ -4,6 +4,7 @@ import { Project } from "@/ts/types";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
+import React from "react";
 
 interface ProjectCardProps {
     project: Project;

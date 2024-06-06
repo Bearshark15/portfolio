@@ -10,7 +10,7 @@ const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
     return (
         <section className={"mt-10"}>
             <div>
-                <div className={"flex justify-between"}>
+                <div className={"flex justify-between align-middle"}>
                     <h1 className={"text-2xl font-bold"}>{entry.title}</h1>
                     <div>
                         <p>{entry.date}</p>

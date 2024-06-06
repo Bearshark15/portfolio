@@ -6,7 +6,7 @@ const Projects: Project[] = [
         title: "Ball Bash",
         shortDescription: "Race against time to destroy the balls.",
         description: "",
-        pageLink: "#",
+        pageLink: "/projects/ballbash",
         thumbnail: "/ballbash/hero_capsule.jpg",
         images: [""],
         team: [],

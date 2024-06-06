@@ -1,71 +1,55 @@
-"use client"
+import React from "react";
 
-import { Button } from './ui/button'
-import Link from 'next/link'
-import Carousel from "@/components/Carousel";
-import {useEffect, useState} from "react";
+import { cn } from "@/lib/utils"
 
-const images : string[] = [
-    "/ballbash/ss_f22b40de80d7f12a1f5b55c820880ecd6a581469.800x600.jpg",
-    "/ballbash/ss_bf1d0066fce4bb66b1523be90075b85a19113a52.800x600.jpg",
-    "/bhor/bhor.png",
-    "/bhor/eevvCc.png",
-    "/overstay/Overstay_art_3.jpg",
-    "/overstay/Overstay_art_2.jpg",
-    "/reon/SS4.png",
-    "/reon/SS3.png"
-]
+const Hero = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    ({ className, ...props }, ref) => (
+    <div
+        ref={ref}
+        className={cn("relative", className)}
+        {...props}
+    />
+));
+Hero.displayName = "Hero"
 
-export default function Hero() {
+const HeroBackground = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    ({ className, ...props }, ref) => (
+    <div
+        ref={ref}
+        className={cn("z-0 w-full h-full bg-primary", className)}
+        {...props}
+    />
+));
+HeroBackground.displayName = "HeroBackground"
 
-    const [photo, setPhoto] = useState(1);
+const HeroContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    ({ className, ...props }, ref) => (
+    <div
+        ref={ref}
+        className={cn("absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center", className)}
+        {...props}
+    />
+));
+HeroContent.displayName = "HeroContent"
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            change();
-        }, 2000);
+const HeroTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+({ className, ...props }, ref) => (
+    <h1
+        ref={ref}
+        className={cn("text-4xl font-bold text-primary", className)}
+        {...props}
+    />
+));
+HeroTitle.displayName = "HeroTitle"
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, [photo]);
+const HeroDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+({ className, ...props }, ref) => (
+    <p
+        ref={ref}
+        className={cn("text-lg text-primary/80", className)}
+        {...props}
+    />
+));
+HeroDescription.displayName = "HeroDescription"
 
-    const change = () => {
-        if (photo === images.length - 1) {
-            setPhoto(0);
-            return;
-        }
-
-        setPhoto((prev) => prev + 1);
-    };
-
-    const returnPhotoURL = () => {
-        return images[photo];
-    };
-
-    return (
-        <div className={"relative"} style={{
-            backgroundImage: 'url(/ballbash/page_bg_raw.jpg)',
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",}}>
-            <div className="isolate px-6 pt-14 lg:px-8">
-                <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-                    <div className={"text-center bg-black bg-opacity-50 py-5 border-2"}>
-                        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                            Jacob Bekele Jansson
-                        </h1>
-                        <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl mt-3">
-                            Software Developer, Game Programmer <br /> Based in Stockholm, Sweden
-                        </h2>
-                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <Button className={"bg-white"}>
-                                <Link href="#portfolio">View Portfolio</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+export { Hero, HeroContent, HeroTitle, HeroDescription, HeroBackground };
