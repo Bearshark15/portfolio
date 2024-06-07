@@ -50,11 +50,11 @@ export default function HeroHome() {
             backgroundRepeat: "no-repeat",}}>
             <div className="isolate px-6 pt-14 lg:px-8">
                 <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-                    <div className={"text-center bg-black bg-opacity-75 py-5 border-2"}>
-                        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                    <div className={"text-center bg-white bg-opacity-75 py-5 border-2"}>
+                        <h1 className="text-4xl font-bold tracking-tight text-black sm:text-5xl">
                             Jacob Bekele Jansson
                         </h1>
-                        <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl mt-3">
+                        <h2 className="text-2xl font-semibold tracking-tight text-black sm:text-3xl mt-3">
                             Software Developer, Game Programmer <br /> Based in Stockholm, Sweden
                         </h2>
                         <div className="mt-10 flex items-center justify-center gap-x-6">

@@ -6,6 +6,10 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
 
+export function setSelectedProject(project: number) {
+    sessionStorage.setItem("selectedProject", String(project));
+}
+
 interface ProjectCardProps {
     project: Project;
 }
@@ -14,7 +18,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <Link
             href={project.pageLink}
-            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}>
+            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}
+            onClick={() => setSelectedProject(project.key - 1)}>
             
             <Card className={"rounded-lg border-2"}>
                 <CardContent className={"pt-4"}>
