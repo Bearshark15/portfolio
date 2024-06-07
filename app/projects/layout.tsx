@@ -9,7 +9,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Subtitle, Title} from "@/components/text/Headings";
 
-export function getSelectedProject() {
+function getSelectedProject() {
     let project = parseInt(sessionStorage.getItem("selectedProject") || "0");
     return Projects[project];
 }

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
 
-export function setSelectedProject(project: number) {
+function setSelectedProject(project: number) {
     sessionStorage.setItem("selectedProject", String(project));
 }
 
