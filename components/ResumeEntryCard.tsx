@@ -8,7 +8,7 @@ interface ResumeEntryCardProps {
 
 const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
     return (
-        <section className={"mt-10"}>
+        <section className={`${entry.key === 1 ? "" : "mt-5"}`}>
             <div>
                 <div className={"flex justify-between align-middle"}>
                     <h1 className={"text-2xl font-bold"}>{entry.title}</h1>

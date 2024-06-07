@@ -1,6 +1,5 @@
 "use client"
 
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Container from "@/components/Container";
 import ProjectList from "@/components/ProjectList";
@@ -9,13 +8,9 @@ import HeroHome from "@/components/HeroHome";
 import {
     Braces,
     GraduationCapIcon,
-    Instagram, InstagramIcon,
-    Linkedin,
     LinkedinIcon,
     LucideMail,
-    Mail,
     PhoneIcon,
-    Smartphone
 } from "lucide-react";
 import projects from "@/ts/projects";
 import education from "@/ts/education";
@@ -26,11 +21,7 @@ import workExperience from "@/ts/experience";
 import { NextUIProvider } from "@nextui-org/react";
 
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
-import Image from "next/image";
 import Link from "next/link";
-import {InstagramLogoIcon} from "@radix-ui/react-icons";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     return (
@@ -41,11 +32,20 @@ export default function Home() {
                 <section className={"w-full min-h-96 border-b border-t"} style={{background: "rgb(240, 244, 247)"}}>
                     <Container>
                         <div className={"mt-14 mb-14 text-center"}>
-                            <h1 id={"background"} className={"text-4xl font-bold"}>Background</h1>
-                            <p>Welcome to my portfolio site!</p>
+                            <h1 id={"background"} className={"text-4xl font-bold"}>Welcome to my portfolio site!</h1>
+                            <p>This website was written using Next.JS and Tailwind CSS in JetBrains WebStorm</p>
                         </div>
-                        <div
-                            className={"h-full flex flex-col md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
+                        <div className={"h-full flex flex-col md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
+                            <div className={"m-10 p-5 border rounded-xl w-56 h-72 z-10 backdrop-blur-xl"}
+                                 style={{background: "rgba(241, 243, 244, 0.1)", borderColor: "hsl(202, 8%, 80%)"}}>
+                                <div className={"flex items-center flex-col gap-2"}>
+                                    <Braces className={"h-16 w-16"}></Braces>
+                                    <h1 className={"text-xl lg:text-2xl font-bold"}>Skills</h1>
+                                    <p style={{color: "hsl(208, 8%, 70%)"}}>Unity, Unreal, Git, Plastic SCM, C#,
+                                        C++, <br/> Java,
+                                        Next.JS, Html, CSS</p>
+                                </div>
+                            </div>
                             <div className={"m-10 p-5 border rounded-xl w-56 h-72 z-10 backdrop-blur-xl"}
                                  style={{background: "rgba(241, 243, 244, 0.1)", borderColor: "hsl(202, 8%, 80%)"}}>
                                 <div className={"flex items-center flex-col gap-2"}>
@@ -78,7 +78,7 @@ export default function Home() {
                     <div className="w-full">
                         <Container>
                             <div className={"mb-10 mt-10 px-5 lg:px-0"}>
-                                <h1 id={"resume"} className={"text-4xl font-bold"}>Resume</h1>
+                                <h1 id={"resume"} className={"text-4xl font-bold text-center"}>Resume</h1>
                                 <h1 className={"text-3xl font-bold my-5"}>About Me</h1>
                                 <h1 className={"text-2xl font-bold"}>Jacob Bekele Jansson</h1>
                                 <p>Game Programmer</p>
@@ -93,14 +93,13 @@ export default function Home() {
                                     culpa
                                     qui officia deserunt mollit anim id est laborum.</p>
                             </div>
-
                             <Accordion type={"multiple"} className={"px-5 lg:px-0"}>
                                 <AccordionItem value="item-1">
                                     <AccordionTrigger>
                                         <h1 className={"font-bold"}>Skills</h1>
                                     </AccordionTrigger>
                                     <AccordionContent>
-                                        <div className={"py-1 px-4"}>
+                                        <div>
                                             <ResumeEntryList entries={skills}/>
                                         </div>
                                     </AccordionContent>
@@ -110,7 +109,7 @@ export default function Home() {
                                         <h1 className={"font-bold"}>Education</h1>
                                     </AccordionTrigger>
                                     <AccordionContent>
-                                        <div className={"py-1 px-4"}>
+                                        <div>
                                             <ResumeEntryList entries={education}/>
                                         </div>
                                     </AccordionContent>
@@ -120,7 +119,7 @@ export default function Home() {
                                         <h1 className={"font-bold"}>Work Experience</h1>
                                     </AccordionTrigger>
                                     <AccordionContent>
-                                        <div className={"py-1 px-4"}>
+                                        <div>
                                             <ResumeEntryList entries={workExperience}/>
                                         </div>
                                     </AccordionContent>
@@ -141,11 +140,8 @@ export default function Home() {
                                 <h1 className={"text-xl font-bold mt-2"}>Jacob Bekele Jansson</h1>
                                 <p>Game Programmer</p>
                                 <div className={"flex items-center mt-2"}>
-                                    <Link href={"#"} className={"mr-2"}>
+                                    <Link href={"https://www.linkedin.com/in/jacob-bekele-jansson-a55b30162"} className={"mr-2"}>
                                         <LinkedinIcon className={"h-10 w-10"}></LinkedinIcon>
-                                    </Link>
-                                    <Link href={"#"}>
-                                        <InstagramLogoIcon className={"h-10 w-10"}></InstagramLogoIcon>
                                     </Link>
                                 </div>
                             </div>
@@ -164,7 +160,8 @@ export default function Home() {
                                 <div className={"my-10"}>
                                     <div className={"flex flex-row items-center"}>
                                         <LucideMail className={"h-10 w-10"}></LucideMail>
-                                        <Link href={"mailto:jacob.b.jansson@gmail.com"} className={"ml-2 text-xl hover:underline"}>
+                                        <Link href={"mailto:jacob.b.jansson@gmail.com"}
+                                              className={"ml-2 text-xl hover:underline"}>
                                             jacob.b.jansson@gmail.com
                                         </Link>
                                     </div>
@@ -175,6 +172,17 @@ export default function Home() {
                                         </Link>
                                     </div>
                                 </div>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                    culpa
+                                    qui officia deserunt mollit anim id est laborum.</p>
                             </div>
                         </div>
                     </Container>

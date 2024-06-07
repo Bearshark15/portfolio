@@ -1,6 +1,7 @@
 
 import { ResumeEntry } from "@/ts/types";
 import ResumeEntryCard from "./ResumeEntryCard";
+import React from "react";
 
 interface ResumeEntryListProps { 
     entries: ResumeEntry[];

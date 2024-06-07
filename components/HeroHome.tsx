@@ -2,7 +2,6 @@
 
 import { Button } from './ui/button'
 import Link from 'next/link'
-import Carousel from "@/components/Carousel";
 import {useEffect, useState} from "react";
 
 const images : string[] = [
@@ -51,7 +50,7 @@ export default function HeroHome() {
             backgroundRepeat: "no-repeat",}}>
             <div className="isolate px-6 pt-14 lg:px-8">
                 <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-                    <div className={"text-center bg-black bg-opacity-50 py-5 border-2"}>
+                    <div className={"text-center bg-black bg-opacity-75 py-5 border-2"}>
                         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                             Jacob Bekele Jansson
                         </h1>
