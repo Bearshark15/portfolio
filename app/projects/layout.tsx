@@ -2,16 +2,15 @@
 
 import {Hero, HeroBackground, HeroContent, HeroDescription, HeroTitle} from "@/components/Hero";
 import React from "react";
-import Projects from "@/ts/projects";
 import Container from "@/components/Container";
 import {ArrowLeft} from "lucide-react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Subtitle, Title} from "@/components/text/Headings";
+import {useProject} from "@/components/ProjectProvider";
 
 function getSelectedProject() {
-    let project = parseInt(sessionStorage.getItem("selectedProject") || "0");
-    return Projects[project];
+    return useProject().project;
 }
 
 export default function ProjectLayout({

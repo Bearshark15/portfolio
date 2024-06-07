@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import {cn} from "@/utils/cn";
+import ProjectProvider from "@/components/ProjectProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={"w-full h-full"}>
       <body className={cn(inter.className, "h-full w-full")}>
-          {children}
+        <ProjectProvider>
+            {children}
+        </ProjectProvider>
       </body>
     </html>
   );

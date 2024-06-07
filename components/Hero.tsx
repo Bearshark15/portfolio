@@ -34,7 +34,7 @@ HeroContent.displayName = "HeroContent"
 
 const HeroTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
 ({ className, ...props }, ref) => (
-    <h1
+    <div
         ref={ref}
         className={cn("text-4xl font-bold text-primary", className)}
         {...props}
@@ -44,7 +44,7 @@ HeroTitle.displayName = "HeroTitle"
 
 const HeroDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
 ({ className, ...props }, ref) => (
-    <p
+    <div
         ref={ref}
         className={cn("text-lg text-primary/80", className)}
         {...props}

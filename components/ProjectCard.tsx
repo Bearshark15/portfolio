@@ -5,23 +5,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
-
-function setSelectedProject(project: number) {
-    sessionStorage.setItem("selectedProject", String(project));
-}
+import {useProject} from "@/components/ProjectProvider";
 
 interface ProjectCardProps {
     project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+
+    const { setProject } = useProject();
+
     return (
         <Link
             href={project.pageLink}
-            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}
-            onClick={() => setSelectedProject(project.key - 1)}>
+            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}>
             
-            <Card className={"rounded-lg border-2"}>
+            <Card className={"rounded-lg border-2"} onClick={() => setProject(project)}>
                 <CardContent className={"pt-4"}>
                     <div className={"aspect-square relative bg-foreground/5 dark:bg-background rounded-lg"}>
                         <Image
