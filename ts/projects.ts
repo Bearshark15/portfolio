@@ -2,6 +2,7 @@ import { Project } from "./types";
 
 const Projects: Project[] = [
     {
+        id: "ballbash",
         key: 1,
         title: "Ball Bash",
         shortDescription: "Race against time to destroy the balls.",
@@ -11,6 +12,7 @@ const Projects: Project[] = [
         bannerImage: "/ballbash/BallBash.png",
     },
     {
+        id: "overstay",
         key: 2,
         title: "OverStay",
         shortDescription: "3D puzzle game.",
@@ -20,6 +22,7 @@ const Projects: Project[] = [
         bannerImage: "/overstay/OverStay.png",
     },
     {
+        id: "reon",
         key: 3,
         title: "R:EON",
         shortDescription: "First person platforming game.",
@@ -29,6 +32,7 @@ const Projects: Project[] = [
         bannerImage: "/reon/SS4.png",
     },
     {
+        id: "potatoreaper",
         key: 4,
         title: "Potato Reaper",
         shortDescription: "Arcade shooter game.",
@@ -38,6 +42,7 @@ const Projects: Project[] = [
         bannerImage: "/potatoreaper/PotatoReaper.jpg",
     },
     {
+        id: "undelivered",
         key: 5,
         title: "Undelivered",
         shortDescription: "Zombie survival game demo.",
@@ -47,6 +52,7 @@ const Projects: Project[] = [
         bannerImage: "/undelivered/Undelivered.png",
     },
     {
+        id: "bhor",
         key: 6,
         title: "Bhor",
         shortDescription: "2D Shoot 'em up game.",
