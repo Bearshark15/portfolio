@@ -6,15 +6,15 @@ export interface TeamMember {
     fallback: string;
 }
 
-export interface Project { 
+export interface Project {
+    id: string;
     key: number;
     title: string;
     shortDescription: string;
     description: string;
     pageLink: string;
     thumbnail: string;
-    images: string[];
-    team: TeamMember[];
+    bannerImage: string;
 }
 
 export interface ResumeEntry { 

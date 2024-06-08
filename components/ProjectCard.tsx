@@ -17,7 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
     return (
         <Link
-            href={project.pageLink}
+            href={`/${project.id}`}
             className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}>
             
             <Card className={"rounded-lg border-2"} onClick={() => setProject(project)}>

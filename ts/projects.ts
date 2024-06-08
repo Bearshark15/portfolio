@@ -8,8 +8,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "/projects/ballbash",
         thumbnail: "/ballbash/hero_capsule.jpg",
-        images: [""],
-        team: [],
+        bannerImage: "/ballbash/BallBash.png",
     },
     {
         key: 2,
@@ -18,8 +17,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "/projects/overstay",
         thumbnail: "/overstay/OverStay.png",
-        images: [""],
-        team: [],
+        bannerImage: "/overstay/OverStay.png",
     },
     {
         key: 3,
@@ -28,8 +26,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "projects/reon",
         thumbnail: "/reon/SS4.png",
-        images: [""],
-        team: [],
+        bannerImage: "/reon/SS4.png",
     },
     {
         key: 4,
@@ -38,44 +35,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "projects/potatoreaper",
         thumbnail: "/potatoreaper/PotatoReaper.jpg",
-        images: [""],
-        team: [
-            {
-                key: 1,
-                name: "Faruk",
-                role: "Project Manager",
-                image: "",
-                fallback: "F",
-            },
-            {
-                key: 2,
-                name: "Andre",
-                role: "Designer",
-                image: "",
-                fallback: "A",
-            },
-            {
-                key: 3,
-                name: "Dani",
-                role: "Programmer",
-                image: "",
-                fallback: "D",
-            },
-            {
-                key: 4,
-                name: "Jacob Bekele Jansson",
-                role: "Programmer",
-                image: "",
-                fallback: "F",
-            },
-            {
-                key: 4,
-                name: "Iver",
-                role: "Artist",
-                image: "",
-                fallback: "F",
-            },
-        ],
+        bannerImage: "/potatoreaper/PotatoReaper.jpg",
     },
     {
         key: 5,
@@ -84,8 +44,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "projects/undelivered",
         thumbnail: "/undelivered/Undelivered.png",
-        images: [""],
-        team: [],
+        bannerImage: "/undelivered/Undelivered.png",
     },
     {
         key: 6,
@@ -94,8 +53,7 @@ const Projects: Project[] = [
         description: "",
         pageLink: "projects/bhor",
         thumbnail: "/bhor/bhor.png",
-        images: [""],
-        team: [],
+        bannerImage: "/bhor/bhor.png",
     },
 ];
 

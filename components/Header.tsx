@@ -4,7 +4,6 @@ import Container from "@/components/Container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
-import { BackgroundGradient } from "./ui/background-gradient";
 import { useState, useEffect } from "react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Bars3Icon } from "@heroicons/react/24/outline";
@@ -49,12 +48,10 @@ const Header = () => {
             <Container>
                 <div className={"px-4 sm:px-6 lg:px-8 flex h-12 items-center justify-between w-full"}>
                     <div className={"flex items-center justify-between"}>
-                        <BackgroundGradient containerClassName={"h-12 w-12 flex items-center justify-center mr-4"}>
-                            <Avatar>
-                                <AvatarImage src="/IMG_0003-Enhanced-NR.jpg" />
-                                <AvatarFallback>JBJ</AvatarFallback>
-                            </Avatar>
-                        </BackgroundGradient>
+                        <Avatar>
+                            <AvatarImage src="/IMG_0003-Enhanced-NR.jpg" />
+                            <AvatarFallback>JBJ</AvatarFallback>
+                        </Avatar>
                         <Link href={"/"} className={"ml-4 lg:ml-0"}>
                             <h1 className={"text-2xl font-bold invisible md:visible lg:visible"}>
                                 Jacob Bekele Jansson

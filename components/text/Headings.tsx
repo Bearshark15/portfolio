@@ -5,7 +5,7 @@ const Title = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHead
     ({ className, ...props }, ref) => (
     <h1
         ref={ref}
-        className={cn("text-4xl font-bold text-primary mb-1", className)}
+        className={cn("text-5xl font-bold text-primary mb-1", className)}
         {...props}
     />
 ));

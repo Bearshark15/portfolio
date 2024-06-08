@@ -1,5 +1,3 @@
-"use client";
-
 import {Hero, HeroBackground, HeroContent, HeroDescription, HeroTitle} from "@/components/Hero";
 import React from "react";
 import Container from "@/components/Container";
@@ -7,19 +5,12 @@ import {ArrowLeft} from "lucide-react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Subtitle, Title} from "@/components/text/Headings";
-import {useProject} from "@/components/ProjectProvider";
+import {getProject} from "@/lib/projects";
 
-function getSelectedProject() {
-    return useProject().project;
-}
+const Project = async ({ params }: { params: { slug: string } }) => {
 
-export default function ProjectLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+    const project = await getProject(params.slug);
 
-    let project = getSelectedProject()
     return (
         <section>
             <Hero className={"h-96"}>
@@ -37,7 +28,7 @@ export default function ProjectLayout({
                 </HeroContent>
                 <HeroBackground>
                     <div className={"mx-auto w-full h-full bg-no-repeat bg-cover bg-center"}
-                         style={{backgroundImage: `url(/ballbash/page_bg_raw.jpg)`}}/>
+                         style={{backgroundImage: `url(${project.bannerImage})`}}/>
                 </HeroBackground>
             </Hero>
             <nav className={"h-14 border-t-2 border-b-2 mb-5"}>
@@ -46,7 +37,7 @@ export default function ProjectLayout({
                 </Container>
             </nav>
             <Container>
-                {children}
+                <article dangerouslySetInnerHTML={{__html: project.contentHtml}}/>
             </Container>
             <div className={"fixed top-5 left-5"}>
                 <Link href={"/#portfolio"}>
@@ -58,3 +49,5 @@ export default function ProjectLayout({
         </section>
     );
 }
+
+export default Project;
