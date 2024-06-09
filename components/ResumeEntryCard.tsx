@@ -1,4 +1,4 @@
-import { ResumeEntry } from "@/ts/types";
+import { ResumeEntry } from "@/lib/types";
 import React from "react";
 
 interface ResumeEntryCardProps {
@@ -10,7 +10,7 @@ const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
     return (
         <section className={`${entry.key === 1 ? "" : "mt-5"}`}>
             <div>
-                <div className={"flex justify-between align-middle"}>
+                <div className={"flex justify-between items-center"}>
                     <h1 className={"text-2xl font-bold"}>{entry.title}</h1>
                     <div>
                         <p>{entry.date}</p>

@@ -36,7 +36,7 @@ const HeroTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
 ({ className, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("text-4xl font-bold text-primary", className)}
+        className={cn("text-4xl font-bold", className)}
         {...props}
     />
 ));
@@ -46,7 +46,7 @@ const HeroDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttribu
 ({ className, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("text-lg text-primary/80", className)}
+        className={cn("text-lg", className)}
         {...props}
     />
 ));

@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import {remark} from 'remark';
 import html from 'remark-html';
-import {Project} from "@/ts/types";
+import {Project} from "@/lib/types";
 
 const projectsDirectory = path.join(process.cwd(), 'projects');
 
@@ -26,6 +26,8 @@ function getAllProjects(): Project[] {
             pageLink: metaData.data.pageLink,
             thumbnail: metaData.data.thumbnail,
             bannerImage: metaData.data.bannerImage,
+            logoImage: metaData.data.logoImage,
+            demoLink: metaData.data.demoLink
         }
     });
 }
@@ -59,5 +61,7 @@ export async function getProject(id: string) {
         title: matterData.data.title,
         shortDescription: matterData.data.shortDescription,
         bannerImage: matterData.data.bannerImage,
+        logoImage: matterData.data.logoImage,
+        demoLink: matterData.data.demoLink
     };
 }

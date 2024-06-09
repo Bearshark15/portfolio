@@ -12,9 +12,10 @@ export interface Project {
     title: string;
     shortDescription: string;
     description: string;
-    pageLink: string;
     thumbnail: string;
     bannerImage: string;
+    logoImage: string;
+    demoLink: string;
 }
 
 export interface ResumeEntry { 

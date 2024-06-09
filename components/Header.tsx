@@ -44,15 +44,15 @@ const Header = () => {
     });
 
     return (
-        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 px-4 border-b backdrop-blur-xl bg-white z-50`}>
+        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 border-b backdrop-blur-xl bg-white z-50`}>
             <Container>
-                <div className={"px-4 sm:px-6 lg:px-8 flex h-12 items-center justify-between w-full"}>
+                <div className={"px-4 flex h-12 items-center justify-between w-full"}>
                     <div className={"flex items-center justify-between"}>
                         <Avatar>
                             <AvatarImage src="/IMG_0003-Enhanced-NR.jpg" />
                             <AvatarFallback>JBJ</AvatarFallback>
                         </Avatar>
-                        <Link href={"/"} className={"ml-4 lg:ml-0"}>
+                        <Link href={"/"} className={"ml-4"}>
                             <h1 className={"text-2xl font-bold invisible md:visible lg:visible"}>
                                 Jacob Bekele Jansson
                             </h1>

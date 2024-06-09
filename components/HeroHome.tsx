@@ -7,8 +7,6 @@ import {useEffect, useState} from "react";
 const images : string[] = [
     "/ballbash/ss_f22b40de80d7f12a1f5b55c820880ecd6a581469.800x600.jpg",
     "/ballbash/ss_bf1d0066fce4bb66b1523be90075b85a19113a52.800x600.jpg",
-    "/bhor/bhor.png",
-    "/bhor/eevvCc.png",
     "/overstay/Overstay_art_3.jpg",
     "/overstay/Overstay_art_2.jpg",
     "/reon/SS4.png",
@@ -49,8 +47,8 @@ export default function HeroHome() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",}}>
             <div className="isolate px-6 pt-14 lg:px-8">
-                <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-                    <div className={"text-center bg-white bg-opacity-75 py-5 border-2"}>
+                <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+                    <div className={"text-center bg-white bg-opacity-85 py-10 border-2"}>
                         <h1 className="text-4xl font-bold tracking-tight text-black sm:text-5xl">
                             Jacob Bekele Jansson
                         </h1>
@@ -58,7 +56,7 @@ export default function HeroHome() {
                             Software Developer, Game Programmer <br /> Based in Stockholm, Sweden
                         </h2>
                         <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <Button className={"bg-white"}>
+                            <Button variant={"outline"}>
                                 <Link href="#portfolio">View Portfolio</Link>
                             </Button>
                         </div>

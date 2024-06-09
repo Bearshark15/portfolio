@@ -1,4 +1,4 @@
-import { Project } from "@/ts/types";
+import { Project } from "@/lib/types";
 import ProjectCard from "./ProjectCard";
 import React from "react";
 

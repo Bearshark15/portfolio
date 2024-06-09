@@ -1,6 +1,6 @@
 "use client"
 
-import { Project } from "@/ts/types";
+import { Project } from "@/lib/types";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <Link
             href={`/${project.id}`}
-            className={"outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-8/12 mx-auto my-auto"}>
+            className={"group outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-10/12 mx-auto my-auto"}>
             
             <Card className={"rounded-lg border-2"}>
                 <CardContent className={"pt-4"}>
@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             src={project.thumbnail}
                             alt={project.title}
                             fill
-                            className={"aspect-square object-cover rounded-lg transition-all duration-300 hover:scale-105"}
+                            className={"aspect-square object-cover rounded-lg transition-all duration-300 group-hover:scale-105"}
                             sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
                         />
                     </div>
@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 <CardFooter className={"flex-col items-start"}>
                     <div>
                         <p className={"font-semibold text-lg"}>{project.title}</p>
-                        <p className={"text-sm text-primary/80"}>{project.shortDescription}</p>
+                        <p className={"text-sm"}>{project.shortDescription}</p>
                     </div>
                 </CardFooter>
             </Card>

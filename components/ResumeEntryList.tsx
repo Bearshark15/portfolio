@@ -1,5 +1,5 @@
 
-import { ResumeEntry } from "@/ts/types";
+import { ResumeEntry } from "@/lib/types";
 import ResumeEntryCard from "./ResumeEntryCard";
 import React from "react";
 
