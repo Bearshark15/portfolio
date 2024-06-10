@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
-import {Project} from "contentlayer/generated";
+import {Project} from "@/lib/types";
 
 interface ProjectCardProps {
     project: Project;
@@ -13,7 +13,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <Link
-            href={`${project.slug}`}
+            href={`/${project.id}`}
             className={"group outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-10/12 mx-auto my-auto"}>
             
             <Card className={"rounded-lg border-2"}>

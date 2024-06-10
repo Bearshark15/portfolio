@@ -1,7 +1,7 @@
 
 import ProjectCard from "./ProjectCard";
 import React from "react";
-import {Project} from "contentlayer/generated";
+import {Project} from "@/lib/types";
 
 interface ProjectListProps {
     projects: Project[];

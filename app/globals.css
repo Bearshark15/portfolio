@@ -85,11 +85,23 @@
 }
 
 .article > pre {
-  @apply p-5 rounded-lg overflow-scroll;
+  @apply p-10 rounded-lg overflow-scroll;
+}
+
+.article > pre > code {
+  @apply p-10;
 }
 
 .article > blockquote {
   @apply pl-5 italic border-l-2 border-neutral-600 border-opacity-40;
+}
+
+pre {
+  @apply border-2 shadow rounded-lg py-4 overflow-scroll;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
 }
 
 code {

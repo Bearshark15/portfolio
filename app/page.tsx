@@ -14,22 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import ResumeData from "@/lib/resume";
-import {allProjects} from "contentlayer/generated";
-
-function getSortedProjects()  {
-    const projects = allProjects.sort((a, b) => {
-        if (a.priority < b.priority) {
-            return 1;
-        } else if (a.priority > b.priority) {
-            return -1;
-        }
-        else {
-            return 0;
-        }
-    });
-
-    return projects;
-}
+import {getSortedProjects} from "@/lib/projects";
 
 export default function Home() {
     const projects = getSortedProjects();
@@ -103,9 +88,7 @@ export default function Home() {
                     <Container>
                         <div className={"mb-10 mt-10"}>
                             <h1 id={"resume"} className={"text-4xl font-bold text-center"}>Resume</h1>
-                            <h1 className={"text-3xl font-bold my-5"}>About Me</h1>
-                            <h1 className={"text-2xl font-bold"}>Jacob Bekele Jansson</h1>
-                            <p>Game Programmer</p>
+                            <h1 className={"text-2xl font-bold my-5"}>About Me</h1>
                             <p className={"xl:w-1/2"}>
                                 I am a 23-year-old Game Programmer and Software Developer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
                                 I love the creative process of making games, where different skills and personalities come together. Being part of the full cycle, from idea to finished product, is especially rewarding.<br/><br/>

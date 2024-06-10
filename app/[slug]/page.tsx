@@ -3,14 +3,11 @@ import Container from "@/components/Container";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {ArrowLeft} from "lucide-react";
-import {allProjects} from "contentlayer/generated";
 import {notFound} from "next/navigation";
-import {MDX} from "@/components/MDX";
+import {getProject} from "@/lib/projects";
 
 async function getProjectFromParams(slug: string ) {
-    const project = allProjects.find((project) => {
-        return project.slug === slug
-    });
+    const project = await getProject(slug);
     if (!project) {
         notFound();
     }
@@ -27,7 +24,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                  style={{backgroundImage: `url(${project.bannerImage})`}}>
                 <div className={"h-full w-full flex flex-col items-center justify-center gap-4"}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={project.logoImage} alt={project.title} className={"w-96"}/>
+                    <img src={project.logoImage} alt={project.title} className={"max-w-96"}/>
                     <Link href={`${project.demoLink}`}
                           passHref legacyBehavior>
                         <a target={"_blank"}>
@@ -37,9 +34,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                 </div>
             </section>
             <Container>
-                <article className={"article"}>
-                    <MDX code={project.body.code}/>
-                </article>
+                <article dangerouslySetInnerHTML={{__html: project.contentHtml}} className={"article"}/>
             </Container>
             <div className={"fixed top-5 left-5"}>
                 <Link href={"/#portfolio"}>

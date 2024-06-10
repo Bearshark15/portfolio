@@ -1,9 +1,12 @@
 import fs from "fs";
 import matter from 'gray-matter';
 import path from 'path';
-import {remark} from 'remark';
-import html from 'remark-html';
 import {Project} from "@/lib/types";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const projectsDirectory = path.join(process.cwd(), 'projects');
 
@@ -31,6 +34,26 @@ function getAllProjects(): Project[] {
     });
 }
 
+async function parseMarkdown(markdown: string) {
+    const result = await unified()
+        .use(remarkParse)
+        .use(remarkRehype)
+        .use(rehypePrettyCode, {
+            theme: "dark-plus",
+            onVisitLine(node) {
+                // Prevent lines from collapsing in `display: grid` mode, and allow empty
+                // lines to be copy/pasted
+                if (node.children.length === 0) {
+                    node.children = [{ type: "text", value: " " }]
+                }
+            },
+        })
+        .use(rehypeStringify)
+        .process(markdown);
+
+    return result.toString();
+}
+
 export function getSortedProjects()  {
     const projects = getAllProjects();
     return projects.sort((a, b) => {
@@ -50,11 +73,7 @@ export async function getProject(id: string) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterData = matter(fileContents);
 
-    const processContent = await remark()
-        .use(html)
-        .process(matterData.content);
-
-    const contentHtml = processContent.toString();
+    const contentHtml = await parseMarkdown(matterData.content);
 
     return {
         id,
