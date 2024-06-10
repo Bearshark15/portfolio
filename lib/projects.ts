@@ -19,15 +19,14 @@ function getAllProjects(): Project[] {
 
         return {
             id,
-            key: metaData.data.key,
+            priority: metaData.data.priority,
             title: metaData.data.title,
-            shortDescription: metaData.data.shortDescription,
-            description: metaData.content,
-            pageLink: metaData.data.pageLink,
+            description: metaData.data.description,
             thumbnail: metaData.data.thumbnail,
             bannerImage: metaData.data.bannerImage,
             logoImage: metaData.data.logoImage,
-            demoLink: metaData.data.demoLink
+            demoLink: metaData.data.demoLink,
+            published: metaData.data.published
         }
     });
 }
@@ -35,9 +34,9 @@ function getAllProjects(): Project[] {
 export function getSortedProjects()  {
     const projects = getAllProjects();
     return projects.sort((a, b) => {
-        if (a.key < b.key) {
+        if (a.priority < b.priority) {
             return 1;
-        } else if (a.key > b.key) {
+        } else if (a.priority > b.priority) {
             return -1;
         }
         else {
@@ -51,7 +50,9 @@ export async function getProject(id: string) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterData = matter(fileContents);
 
-    const processContent = await remark().use(html).process(matterData.content);
+    const processContent = await remark()
+        .use(html)
+        .process(matterData.content);
 
     const contentHtml = processContent.toString();
 
@@ -59,7 +60,7 @@ export async function getProject(id: string) {
         id,
         contentHtml,
         title: matterData.data.title,
-        shortDescription: matterData.data.shortDescription,
+        description: matterData.data.description,
         bannerImage: matterData.data.bannerImage,
         logoImage: matterData.data.logoImage,
         demoLink: matterData.data.demoLink

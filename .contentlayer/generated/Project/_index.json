@@ -1,0 +1,152 @@
+[
+  {
+    "priority": 6,
+    "title": "Ball Bash",
+    "description": "Local multiplayer party racing game.",
+    "thumbnail": "/ballbash/thumbnail.png",
+    "bannerImage": "/ballbash/page_bg_raw.jpg",
+    "logoImage": "/ballbash/logo.png",
+    "demoLink": "https://store.steampowered.com/app/2437980/Ball_Bash/",
+    "published": "true\r",
+    "body": {
+      "raw": "\r\n# Background\r\n\r\nBallBash is a party racing game for up to 4 people. I worked on this game outside of my studies at Uppsala, however the project was started by one of my classmates as part of a production course that I wasn’t taking at the time. At the start of the game the player gets assigned a character to play as and all the characters has a set of abilities available to them represented by the cards in the image above. The players then race against each other while avoiding obstacles and using their abilities to try and get ahead. The game also features runtime generated levels and environments.\r\nOn this project most of my work has been on the different abilities in the game as well as the level generation system. \r\n\r\n## Ability System\r\n\r\nThis is an ongoing project, and it has gone through a few iterations and redesigns, a major one being the ability system. In the beginning of the project the idea was that the player would be able to create a set of abilities, represented by a deck of cards, in the in-game menu and select which one they wanted to use along with a character skin before the game started. This has later been changed to characters with their own predefined set abilities similar to how a hero shooter like Overwatch handles their characters.\r\n\r\n### Iteration 1\r\n\r\nWhen I began writing the first iteration of the ability system, I wanted to use Unity’s Scriptable Object API to make the individual abilities so that all their properties would be easily accessible by the designers and easily managed in the editor. \r\n\r\nHowever, I realized an issue with this approach when I started testing. If the abilities state, properties, and behaviour were all contained within a ScriptableObject the state of an ability would be shared between the players who had the same ability in their deck. This was only an issue because of an assumption I made in the beginning which was that you couldn’t create new instances of scriptable objects at runtime but only through the context menu in the editor. \r\n\r\nSo, what I did was keep the scriptable objects for storing only the properties of the abilities and I created a MonoBehaviour for each of the abilities and added them to the players at runtime based on which deck they choose. \r\nWhich MonoBehaviour to add to the players was based on which deck of card (abilities) they choose before the start of the game. These decks were created by the player before hand and needed to be saved locally so that they would persist between sessions. In hindsight this was not an ideal solution, but I created an Enum of values matching the names of the MonoBehaviours. The names and order of the Enum values was essential for this system to work as I used them to build the deck and add the MonoBehaviours the players. \r\n\r\nWhen the player was building their decks in the UI, what they were doing was creating a list of these Enum values, representing each of the abilities, and then serializing them as integers in a JSON file. When the decks (i.e. JSON files) where loaded from disk the integers were cast back into there Enum counterparts, which is why the order was important. If the order changed all the deck previously created would be broken/incorrect. Before the start of the game, when the player selected their decks (the list of Enum values) I casted the Enum values to strings and used the Type.GetType method of the C# System namespace to retrieve the Type and used Unity’s AddComponent method to add the MonoBehaviour to the player. This is why it was important that the names of the Enum values matched the name of the MonoBehaviours, otherwise the whole system would break. This was far from an ideal solution, but it worked for the time being.\r\n\r\n### Iteration 2\r\n\r\nThe second iteration of this system was in some ways like the first, however I got rid of the Enum and made all the abilities their own ScriptableObject (including properties and behaviour) deriving from the same base class. To replace the Enum that I used to make and save the decks locally I associated each ability with a GUID and made a “Ability Database” which was a List of all the abilities that would be available to the player in-game. Now when the player made the decks in the UI, instead of casting Enum values to integers and saving that, I saved the GUIDs of the abilities they chose. And when loading the decks I queried the List of available abilities for the ones with the corresponding GUIDs and added each of those abilities to the player. \r\nWhen a deck is loaded, each ability with GUIDs matching what’s stored in the decks JSON file are clone and added to the player. i.e. a new instance of the Ability ScriptableObject is created, with all the same values as the original. This was to make sure that players with the same abilities in their decks could use them at the same time without them interfering with each other. \r\n\r\n### Iteration 3\r\n\r\nThe third iteration of this system saw some minor changes unlike the second. It was decided that we would pivot more towards the hero shooter approach that I mentioned earlier. We would now have different characters each with a predefined set of abilities. To accommodate this, I created two new ScriptableObject, one representing an in-game character called Character, and one representing a deck of abilities called AbilityDeck. \r\n\r\n```cpp\r\n[CreateAssetMenu(fileName = \"New Ability Deck\", menuName = \"Ability Deck\")]\r\npublic class AbilityDeck : ScriptableObject, IEnumerable<Ability>\r\n{\r\n    [SerializeField] private bool m_shuffleAtStart;\r\n    [SerializeField] private List<Ability> m_abilities;\r\n\r\n    public void Add(Ability ability)\r\n    {\r\n        m_abilities.Add(ability);\r\n    }\r\n\r\n    public IEnumerable<Ability> GetAbilities() => m_shuffleAtStart ? \r\n        m_abilities.Select(a => a.Clone() as Ability).ToList().Shuffle() : \r\n        m_abilities.Select(a => a.Clone() as Ability);\r\n    \r\n    public bool Contains(Ability ability) => m_abilities.Contains(ability);\r\n\r\n    public List<Ability> GetOriginalAbilities()\r\n    {\r\n        return m_abilities;\r\n    }\r\n\r\n    public IEnumerator<Ability> GetEnumerator()\r\n    {\r\n        return m_abilities.GetEnumerator();\r\n    }\r\n\r\n    IEnumerator IEnumerable.GetEnumerator()\r\n    {\r\n        return GetEnumerator();\r\n    }\r\n}\r\n```\r\n\r\nThe AbilityDeck was just a wrapper around a List to which the designers could add different abilities and create different decks. The Character, among other things, had a field for storing a AbilityDeck. This allowed the designers to created data representations of all the characters that should be in the game as well as associate collections of abilities to those characters. \r\n",
+      "code": "var Component=(()=>{var b=Object.create;var s=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,w=Object.prototype.hasOwnProperty;var g=(a,e)=>()=>(e||a((e={exports:{}}).exports,e),e.exports),y=(a,e)=>{for(var i in e)s(a,i,{get:e[i],enumerable:!0})},o=(a,e,i,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let n of u(e))!w.call(a,n)&&n!==i&&s(a,n,{get:()=>e[n],enumerable:!(r=m(e,n))||r.enumerable});return a};var f=(a,e,i)=>(i=a!=null?b(p(a)):{},o(e||!a||!a.__esModule?s(i,\"default\",{value:a,enumerable:!0}):i,a)),k=a=>o(s({},\"__esModule\",{value:!0}),a);var l=g((T,h)=>{h.exports=_jsx_runtime});var I={};y(I,{default:()=>c,frontmatter:()=>v});var t=f(l()),v={priority:6,title:\"Ball Bash\",description:\"Local multiplayer party racing game.\",thumbnail:\"/ballbash/thumbnail.png\",bannerImage:\"/ballbash/page_bg_raw.jpg\",logoImage:\"/ballbash/logo.png\",demoLink:\"https://store.steampowered.com/app/2437980/Ball_Bash/\",published:!0};function d(a){let e={a:\"a\",code:\"code\",h1:\"h1\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...a.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsxs)(e.h1,{id:\"background\",children:[(0,t.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#background\",children:(0,t.jsx)(e.span,{className:\"icon icon-link\"})}),\"Background\"]}),`\n`,(0,t.jsx)(e.p,{children:`BallBash is a party racing game for up to 4 people. I worked on this game outside of my studies at Uppsala, however the project was started by one of my classmates as part of a production course that I wasn\\u2019t taking at the time. At the start of the game the player gets assigned a character to play as and all the characters has a set of abilities available to them represented by the cards in the image above. The players then race against each other while avoiding obstacles and using their abilities to try and get ahead. The game also features runtime generated levels and environments.\\r\nOn this project most of my work has been on the different abilities in the game as well as the level generation system.`}),`\n`,(0,t.jsxs)(e.h2,{id:\"ability-system\",children:[(0,t.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#ability-system\",children:(0,t.jsx)(e.span,{className:\"icon icon-link\"})}),\"Ability System\"]}),`\n`,(0,t.jsx)(e.p,{children:\"This is an ongoing project, and it has gone through a few iterations and redesigns, a major one being the ability system. In the beginning of the project the idea was that the player would be able to create a set of abilities, represented by a deck of cards, in the in-game menu and select which one they wanted to use along with a character skin before the game started. This has later been changed to characters with their own predefined set abilities similar to how a hero shooter like Overwatch handles their characters.\"}),`\n`,(0,t.jsxs)(e.h3,{id:\"iteration-1\",children:[(0,t.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#iteration-1\",children:(0,t.jsx)(e.span,{className:\"icon icon-link\"})}),\"Iteration 1\"]}),`\n`,(0,t.jsx)(e.p,{children:\"When I began writing the first iteration of the ability system, I wanted to use Unity\\u2019s Scriptable Object API to make the individual abilities so that all their properties would be easily accessible by the designers and easily managed in the editor.\"}),`\n`,(0,t.jsx)(e.p,{children:\"However, I realized an issue with this approach when I started testing. If the abilities state, properties, and behaviour were all contained within a ScriptableObject the state of an ability would be shared between the players who had the same ability in their deck. This was only an issue because of an assumption I made in the beginning which was that you couldn\\u2019t create new instances of scriptable objects at runtime but only through the context menu in the editor.\"}),`\n`,(0,t.jsx)(e.p,{children:`So, what I did was keep the scriptable objects for storing only the properties of the abilities and I created a MonoBehaviour for each of the abilities and added them to the players at runtime based on which deck they choose.\\r\nWhich MonoBehaviour to add to the players was based on which deck of card (abilities) they choose before the start of the game. These decks were created by the player before hand and needed to be saved locally so that they would persist between sessions. In hindsight this was not an ideal solution, but I created an Enum of values matching the names of the MonoBehaviours. The names and order of the Enum values was essential for this system to work as I used them to build the deck and add the MonoBehaviours the players.`}),`\n`,(0,t.jsx)(e.p,{children:\"When the player was building their decks in the UI, what they were doing was creating a list of these Enum values, representing each of the abilities, and then serializing them as integers in a JSON file. When the decks (i.e. JSON files) where loaded from disk the integers were cast back into there Enum counterparts, which is why the order was important. If the order changed all the deck previously created would be broken/incorrect. Before the start of the game, when the player selected their decks (the list of Enum values) I casted the Enum values to strings and used the Type.GetType method of the C# System namespace to retrieve the Type and used Unity\\u2019s AddComponent method to add the MonoBehaviour to the player. This is why it was important that the names of the Enum values matched the name of the MonoBehaviours, otherwise the whole system would break. This was far from an ideal solution, but it worked for the time being.\"}),`\n`,(0,t.jsxs)(e.h3,{id:\"iteration-2\",children:[(0,t.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#iteration-2\",children:(0,t.jsx)(e.span,{className:\"icon icon-link\"})}),\"Iteration 2\"]}),`\n`,(0,t.jsx)(e.p,{children:`The second iteration of this system was in some ways like the first, however I got rid of the Enum and made all the abilities their own ScriptableObject (including properties and behaviour) deriving from the same base class. To replace the Enum that I used to make and save the decks locally I associated each ability with a GUID and made a \\u201CAbility Database\\u201D which was a List of all the abilities that would be available to the player in-game. Now when the player made the decks in the UI, instead of casting Enum values to integers and saving that, I saved the GUIDs of the abilities they chose. And when loading the decks I queried the List of available abilities for the ones with the corresponding GUIDs and added each of those abilities to the player.\\r\nWhen a deck is loaded, each ability with GUIDs matching what\\u2019s stored in the decks JSON file are clone and added to the player. i.e. a new instance of the Ability ScriptableObject is created, with all the same values as the original. This was to make sure that players with the same abilities in their decks could use them at the same time without them interfering with each other.`}),`\n`,(0,t.jsxs)(e.h3,{id:\"iteration-3\",children:[(0,t.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#iteration-3\",children:(0,t.jsx)(e.span,{className:\"icon icon-link\"})}),\"Iteration 3\"]}),`\n`,(0,t.jsx)(e.p,{children:\"The third iteration of this system saw some minor changes unlike the second. It was decided that we would pivot more towards the hero shooter approach that I mentioned earlier. We would now have different characters each with a predefined set of abilities. To accommodate this, I created two new ScriptableObject, one representing an in-game character called Character, and one representing a deck of abilities called AbilityDeck.\"}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-cpp\",children:`[CreateAssetMenu(fileName = \"New Ability Deck\", menuName = \"Ability Deck\")]\\r\npublic class AbilityDeck : ScriptableObject, IEnumerable<Ability>\\r\n{\\r\n    [SerializeField] private bool m_shuffleAtStart;\\r\n    [SerializeField] private List<Ability> m_abilities;\\r\n\\r\n    public void Add(Ability ability)\\r\n    {\\r\n        m_abilities.Add(ability);\\r\n    }\\r\n\\r\n    public IEnumerable<Ability> GetAbilities() => m_shuffleAtStart ? \\r\n        m_abilities.Select(a => a.Clone() as Ability).ToList().Shuffle() : \\r\n        m_abilities.Select(a => a.Clone() as Ability);\\r\n    \\r\n    public bool Contains(Ability ability) => m_abilities.Contains(ability);\\r\n\\r\n    public List<Ability> GetOriginalAbilities()\\r\n    {\\r\n        return m_abilities;\\r\n    }\\r\n\\r\n    public IEnumerator<Ability> GetEnumerator()\\r\n    {\\r\n        return m_abilities.GetEnumerator();\\r\n    }\\r\n\\r\n    IEnumerator IEnumerable.GetEnumerator()\\r\n    {\\r\n        return GetEnumerator();\\r\n    }\\r\n}\n`})}),`\n`,(0,t.jsx)(e.p,{children:\"The AbilityDeck was just a wrapper around a List to which the designers could add different abilities and create different decks. The Character, among other things, had a field for storing a AbilityDeck. This allowed the designers to created data representations of all the characters that should be in the game as well as associate collections of abilities to those characters.\"})]})}function c(a={}){let{wrapper:e}=a.components||{};return e?(0,t.jsx)(e,{...a,children:(0,t.jsx)(d,{...a})}):d(a)}return k(I);})();\n;return Component;"
+    },
+    "_id": "ballbash.mdx",
+    "_raw": {
+      "sourceFilePath": "ballbash.mdx",
+      "sourceFileName": "ballbash.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "ballbash"
+    },
+    "type": "Project",
+    "slug": "ballbash",
+    "slugAsParams": ""
+  },
+  {
+    "priority": 1,
+    "title": "Bhor",
+    "description": "2D Shoot 'em up game.",
+    "thumbnail": "/bhor/bhor.png",
+    "bannerImage": "/bhor/bhor.png",
+    "logoImage": "/bhor/logo.png",
+    "demoLink": "https://kuehldy.itch.io/bhor",
+    "published": "false\r",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var g=Object.create;var a=Object.defineProperty;var b=Object.getOwnPropertyDescriptor;var c=Object.getOwnPropertyNames;var l=Object.getPrototypeOf,d=Object.prototype.hasOwnProperty;var x=(t,o)=>()=>(o||t((o={exports:{}}).exports,o),o.exports),f=(t,o)=>{for(var e in o)a(t,e,{get:o[e],enumerable:!0})},h=(t,o,e,i)=>{if(o&&typeof o==\"object\"||typeof o==\"function\")for(let r of c(o))!d.call(t,r)&&r!==e&&a(t,r,{get:()=>o[r],enumerable:!(i=b(o,r))||i.enumerable});return t};var _=(t,o,e)=>(e=t!=null?g(l(t)):{},h(o||!t||!t.__esModule?a(e,\"default\",{value:t,enumerable:!0}):e,t)),j=t=>h(a({},\"__esModule\",{value:!0}),t);var p=x((k,m)=>{m.exports=_jsx_runtime});var D={};f(D,{default:()=>u,frontmatter:()=>y});var n=_(p()),y={priority:1,title:\"Bhor\",description:\"2D Shoot 'em up game.\",thumbnail:\"/bhor/bhor.png\",bannerImage:\"/bhor/bhor.png\",logoImage:\"/bhor/logo.png\",demoLink:\"https://kuehldy.itch.io/bhor\",published:!1};function s(t){return(0,n.jsx)(n.Fragment,{})}function u(t={}){let{wrapper:o}=t.components||{};return o?(0,n.jsx)(o,{...t,children:(0,n.jsx)(s,{...t})}):s(t)}return j(D);})();\n;return Component;"
+    },
+    "_id": "bhor.mdx",
+    "_raw": {
+      "sourceFilePath": "bhor.mdx",
+      "sourceFileName": "bhor.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "bhor"
+    },
+    "type": "Project",
+    "slug": "bhor",
+    "slugAsParams": ""
+  },
+  {
+    "priority": 5,
+    "title": "OverStay",
+    "description": "3D puzzle game.",
+    "thumbnail": "/overstay/thumbnail.png",
+    "bannerImage": "/overstay/OverStay.png",
+    "logoImage": "/overstay/logo.png",
+    "demoLink": "https://vlada-morgun.itch.io/overstay",
+    "published": "false\r",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var p=Object.create;var a=Object.defineProperty;var c=Object.getOwnPropertyDescriptor;var y=Object.getOwnPropertyNames;var d=Object.getPrototypeOf,v=Object.prototype.hasOwnProperty;var x=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),f=(t,e)=>{for(var n in e)a(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of y(e))!v.call(t,o)&&o!==n&&a(t,o,{get:()=>e[o],enumerable:!(i=c(e,o))||i.enumerable});return t};var h=(t,e,n)=>(n=t!=null?p(d(t)):{},s(e||!t||!t.__esModule?a(n,\"default\",{value:t,enumerable:!0}):n,t)),_=t=>s(a({},\"__esModule\",{value:!0}),t);var u=x((M,m)=>{m.exports=_jsx_runtime});var j={};f(j,{default:()=>l,frontmatter:()=>b});var r=h(u()),b={priority:5,title:\"OverStay\",description:\"3D puzzle game.\",thumbnail:\"/overstay/thumbnail.png\",bannerImage:\"/overstay/OverStay.png\",logoImage:\"/overstay/logo.png\",demoLink:\"https://vlada-morgun.itch.io/overstay\",published:!1};function g(t){return(0,r.jsx)(r.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,r.jsx)(e,{...t,children:(0,r.jsx)(g,{...t})}):g(t)}return _(j);})();\n;return Component;"
+    },
+    "_id": "overstay.mdx",
+    "_raw": {
+      "sourceFilePath": "overstay.mdx",
+      "sourceFileName": "overstay.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "overstay"
+    },
+    "type": "Project",
+    "slug": "overstay",
+    "slugAsParams": ""
+  },
+  {
+    "priority": 3,
+    "title": "Potato Reaper",
+    "description": "Arcade shooter game.",
+    "thumbnail": "/potatoreaper/thumbnail.png",
+    "bannerImage": "/potatoreaper/BG.jpg",
+    "logoImage": "/potatoreaper/logo.png",
+    "demoLink": "https://farukosm.itch.io/potato-reaper",
+    "published": "false\r",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var g=Object.create;var n=Object.defineProperty;var l=Object.getOwnPropertyDescriptor;var d=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,h=Object.prototype.hasOwnProperty;var x=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),_=(t,e)=>{for(var o in e)n(t,o,{get:e[o],enumerable:!0})},i=(t,e,o,p)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let a of d(e))!h.call(t,a)&&a!==o&&n(t,a,{get:()=>e[a],enumerable:!(p=l(e,a))||p.enumerable});return t};var b=(t,e,o)=>(o=t!=null?g(f(t)):{},i(e||!t||!t.__esModule?n(o,\"default\",{value:t,enumerable:!0}):o,t)),j=t=>i(n({},\"__esModule\",{value:!0}),t);var s=x((C,m)=>{m.exports=_jsx_runtime});var k={};_(k,{default:()=>c,frontmatter:()=>M});var r=b(s()),M={priority:3,title:\"Potato Reaper\",description:\"Arcade shooter game.\",thumbnail:\"/potatoreaper/thumbnail.png\",bannerImage:\"/potatoreaper/BG.jpg\",logoImage:\"/potatoreaper/logo.png\",demoLink:\"https://farukosm.itch.io/potato-reaper\",published:!1};function u(t){return(0,r.jsx)(r.Fragment,{})}function c(t={}){let{wrapper:e}=t.components||{};return e?(0,r.jsx)(e,{...t,children:(0,r.jsx)(u,{...t})}):u(t)}return j(k);})();\n;return Component;"
+    },
+    "_id": "potatoreaper.mdx",
+    "_raw": {
+      "sourceFilePath": "potatoreaper.mdx",
+      "sourceFileName": "potatoreaper.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "potatoreaper"
+    },
+    "type": "Project",
+    "slug": "potatoreaper",
+    "slugAsParams": ""
+  },
+  {
+    "priority": 4,
+    "title": "R:EON",
+    "description": "First person platforming game.",
+    "thumbnail": "/reon/SS4.png",
+    "bannerImage": "/reon/SS4.png",
+    "logoImage": "/reon/logo.png",
+    "demoLink": "https://farukosm.itch.io/reon",
+    "published": "false\r",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var c=Object.create;var a=Object.defineProperty;var l=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var x=Object.getPrototypeOf,d=Object.prototype.hasOwnProperty;var h=(t,n)=>()=>(n||t((n={exports:{}}).exports,n),n.exports),_=(t,n)=>{for(var e in n)a(t,e,{get:n[e],enumerable:!0})},m=(t,n,e,i)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let r of f(n))!d.call(t,r)&&r!==e&&a(t,r,{get:()=>n[r],enumerable:!(i=l(n,r))||i.enumerable});return t};var S=(t,n,e)=>(e=t!=null?c(x(t)):{},m(n||!t||!t.__esModule?a(e,\"default\",{value:t,enumerable:!0}):e,t)),b=t=>m(a({},\"__esModule\",{value:!0}),t);var p=h((k,s)=>{s.exports=_jsx_runtime});var F={};_(F,{default:()=>u,frontmatter:()=>j});var o=S(p()),j={priority:4,title:\"R:EON\",description:\"First person platforming game.\",thumbnail:\"/reon/SS4.png\",bannerImage:\"/reon/SS4.png\",logoImage:\"/reon/logo.png\",demoLink:\"https://farukosm.itch.io/reon\",published:!1};function g(t){return(0,o.jsx)(o.Fragment,{})}function u(t={}){let{wrapper:n}=t.components||{};return n?(0,o.jsx)(n,{...t,children:(0,o.jsx)(g,{...t})}):g(t)}return b(F);})();\n;return Component;"
+    },
+    "_id": "reon.mdx",
+    "_raw": {
+      "sourceFilePath": "reon.mdx",
+      "sourceFileName": "reon.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "reon"
+    },
+    "type": "Project",
+    "slug": "reon",
+    "slugAsParams": ""
+  },
+  {
+    "priority": 2,
+    "title": "Undelivered",
+    "description": "Zombie survival game demo.",
+    "thumbnail": "/undelivered/Undelivered.png",
+    "bannerImage": "/undelivered/Undelivered.png",
+    "logoImage": "/undelivered/logo.png",
+    "demoLink": "https://eaxcy.itch.io/undelivered",
+    "published": "false\r",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var c=Object.create;var o=Object.defineProperty;var g=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var v=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var f=(e,n)=>()=>(n||e((n={exports:{}}).exports,n),n.exports),h=(e,n)=>{for(var t in n)o(e,t,{get:n[t],enumerable:!0})},a=(e,n,t,d)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let i of p(n))!x.call(e,i)&&i!==t&&o(e,i,{get:()=>n[i],enumerable:!(d=g(n,i))||d.enumerable});return e};var _=(e,n,t)=>(t=e!=null?c(v(e)):{},a(n||!e||!e.__esModule?o(t,\"default\",{value:e,enumerable:!0}):t,e)),b=e=>a(o({},\"__esModule\",{value:!0}),e);var m=f((U,l)=>{l.exports=_jsx_runtime});var y={};h(y,{default:()=>s,frontmatter:()=>j});var r=_(m()),j={priority:2,title:\"Undelivered\",description:\"Zombie survival game demo.\",thumbnail:\"/undelivered/Undelivered.png\",bannerImage:\"/undelivered/Undelivered.png\",logoImage:\"/undelivered/logo.png\",demoLink:\"https://eaxcy.itch.io/undelivered\",published:!1};function u(e){return(0,r.jsx)(r.Fragment,{})}function s(e={}){let{wrapper:n}=e.components||{};return n?(0,r.jsx)(n,{...e,children:(0,r.jsx)(u,{...e})}):u(e)}return b(y);})();\n;return Component;"
+    },
+    "_id": "undelivered.mdx",
+    "_raw": {
+      "sourceFilePath": "undelivered.mdx",
+      "sourceFileName": "undelivered.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "undelivered"
+    },
+    "type": "Project",
+    "slug": "undelivered",
+    "slugAsParams": ""
+  }
+]

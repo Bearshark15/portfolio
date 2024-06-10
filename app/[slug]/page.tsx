@@ -2,12 +2,24 @@ import React from "react";
 import Container from "@/components/Container";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
-import {getProject} from "@/lib/projects";
 import {ArrowLeft} from "lucide-react";
+import {allProjects} from "contentlayer/generated";
+import {notFound} from "next/navigation";
+import {MDX} from "@/components/MDX";
+
+async function getProjectFromParams(slug: string ) {
+    const project = allProjects.find((project) => {
+        return project.slug === slug
+    });
+    if (!project) {
+        notFound();
+    }
+    return project;
+}
 
 const Project = async ({ params }: { params: { slug: string } }) => {
 
-    const project = await getProject(params.slug);
+    const project = await getProjectFromParams(params.slug);
 
     return (
         <main>
@@ -25,7 +37,9 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                 </div>
             </section>
             <Container>
-                <article dangerouslySetInnerHTML={{__html: project.contentHtml}} className={"article"}/>
+                <article className={"article"}>
+                    <MDX code={project.body.code}/>
+                </article>
             </Container>
             <div className={"fixed top-5 left-5"}>
                 <Link href={"/#portfolio"}>

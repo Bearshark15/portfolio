@@ -6,7 +6,6 @@ import HeroHome from "@/components/HeroHome";
 import {
     Braces,
     GraduationCapIcon, Linkedin,
-    LinkedinIcon, LucideLinkedin,
     LucideMail,
     PhoneIcon, Smile,
 } from "lucide-react";
@@ -14,8 +13,23 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
-import {getSortedProjects} from "@/lib/projects";
 import ResumeData from "@/lib/resume";
+import {allProjects} from "contentlayer/generated";
+
+function getSortedProjects()  {
+    const projects = allProjects.sort((a, b) => {
+        if (a.priority < b.priority) {
+            return 1;
+        } else if (a.priority > b.priority) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    });
+
+    return projects;
+}
 
 export default function Home() {
     const projects = getSortedProjects();
@@ -33,7 +47,7 @@ export default function Home() {
                         <div className={"h-full flex flex-col gap-5 md:gap-20 md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
                             <div className={"p-5 border rounded-xl w-64 h-[22rem]"}
                                  style={{background: "rgb(255,255,255)", borderColor: "hsl(202, 8%, 80%)"}}>
-                                <div className={"flex items-center flex-col gap-2 overflow-y-scroll"}>
+                                <div className={"flex items-center flex-col gap-2"}>
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>About Me</h1>
                                     <p style={{color: "hsl(208, 8%, 70%)"}} className={""}>

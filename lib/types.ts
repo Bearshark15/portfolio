@@ -8,14 +8,14 @@ export interface TeamMember {
 
 export interface Project {
     id: string;
-    key: number;
+    priority: number;
     title: string;
-    shortDescription: string;
     description: string;
     thumbnail: string;
     bannerImage: string;
     logoImage: string;
     demoLink: string;
+    published: boolean;
 }
 
 export interface ResumeEntry { 

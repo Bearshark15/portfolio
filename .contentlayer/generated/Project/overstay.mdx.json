@@ -1,0 +1,25 @@
+{
+  "priority": 5,
+  "title": "OverStay",
+  "description": "3D puzzle game.",
+  "thumbnail": "/overstay/thumbnail.png",
+  "bannerImage": "/overstay/OverStay.png",
+  "logoImage": "/overstay/logo.png",
+  "demoLink": "https://vlada-morgun.itch.io/overstay",
+  "published": "false\r",
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var p=Object.create;var a=Object.defineProperty;var c=Object.getOwnPropertyDescriptor;var y=Object.getOwnPropertyNames;var d=Object.getPrototypeOf,v=Object.prototype.hasOwnProperty;var x=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),f=(t,e)=>{for(var n in e)a(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of y(e))!v.call(t,o)&&o!==n&&a(t,o,{get:()=>e[o],enumerable:!(i=c(e,o))||i.enumerable});return t};var h=(t,e,n)=>(n=t!=null?p(d(t)):{},s(e||!t||!t.__esModule?a(n,\"default\",{value:t,enumerable:!0}):n,t)),_=t=>s(a({},\"__esModule\",{value:!0}),t);var u=x((M,m)=>{m.exports=_jsx_runtime});var j={};f(j,{default:()=>l,frontmatter:()=>b});var r=h(u()),b={priority:5,title:\"OverStay\",description:\"3D puzzle game.\",thumbnail:\"/overstay/thumbnail.png\",bannerImage:\"/overstay/OverStay.png\",logoImage:\"/overstay/logo.png\",demoLink:\"https://vlada-morgun.itch.io/overstay\",published:!1};function g(t){return(0,r.jsx)(r.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,r.jsx)(e,{...t,children:(0,r.jsx)(g,{...t})}):g(t)}return _(j);})();\n;return Component;"
+  },
+  "_id": "overstay.mdx",
+  "_raw": {
+    "sourceFilePath": "overstay.mdx",
+    "sourceFileName": "overstay.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "overstay"
+  },
+  "type": "Project",
+  "slug": "overstay",
+  "slugAsParams": ""
+}
