@@ -8,7 +8,7 @@ import {getProject} from "@/lib/projects";
 
 async function getProjectFromParams(slug: string ) {
     const project = await getProject(slug);
-    if (!project) {
+    if (!project || !project.published) {
         notFound();
     }
     return project;

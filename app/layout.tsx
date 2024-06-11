@@ -33,7 +33,6 @@ export default function RootLayout({
       <body className={cn(fontSans.variable, poppins.variable, "h-full w-full")}>
       <ThemeProvider attribute={"class"} defaultTheme={"system"} enableSystem={true}>
         {children}
-          <ThemeToggle/>
       </ThemeProvider>
       </body>
     </html>

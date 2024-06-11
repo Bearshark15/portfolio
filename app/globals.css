@@ -50,7 +50,6 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -58,6 +57,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.about-me-card {
+  @apply p-5 border rounded-xl w-64 h-[22rem];
+  background: rgb(255,255,255);
+  border-color: hsl(202, 8%, 80%);
 }
 
 .article {
@@ -94,6 +99,10 @@
 
 .article > blockquote {
   @apply pl-5 italic border-l-2 border-neutral-600 border-opacity-40;
+}
+
+.article > mark {
+  @apply bg-yellow-300;
 }
 
 pre {

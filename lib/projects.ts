@@ -55,8 +55,7 @@ async function parseMarkdown(markdown: string) {
 }
 
 export function getSortedProjects()  {
-    const projects = getAllProjects();
-    return projects.sort((a, b) => {
+    const projects = getAllProjects().sort((a, b) => {
         if (a.priority < b.priority) {
             return 1;
         } else if (a.priority > b.priority) {
@@ -66,6 +65,8 @@ export function getSortedProjects()  {
             return 0;
         }
     });
+
+    return projects.filter(project => project.published);
 }
 
 export async function getProject(id: string) {
@@ -82,6 +83,7 @@ export async function getProject(id: string) {
         description: matterData.data.description,
         bannerImage: matterData.data.bannerImage,
         logoImage: matterData.data.logoImage,
-        demoLink: matterData.data.demoLink
+        demoLink: matterData.data.demoLink,
+        published: matterData.data.published
     };
 }

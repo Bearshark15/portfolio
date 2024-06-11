@@ -30,8 +30,7 @@ export default function Home() {
                             <p>This website was written using Next.JS and Tailwind CSS in JetBrains WebStorm</p>
                         </div>
                         <div className={"h-full flex flex-col gap-5 md:gap-20 md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
-                            <div className={"p-5 border rounded-xl w-64 h-[22rem]"}
-                                 style={{background: "rgb(255,255,255)", borderColor: "hsl(202, 8%, 80%)"}}>
+                            <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>About Me</h1>
@@ -43,8 +42,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className={"p-5 border rounded-xl w-64 h-[22rem]"}
-                                 style={{background: "rgb(255,255,255)", borderColor: "hsl(202, 8%, 80%)"}}>
+                            <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Braces className={"h-16 w-16"}></Braces>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>Skills</h1>
@@ -56,8 +54,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className={"p-5 border rounded-xl w-64 h-[22rem]"}
-                                 style={{background: "rgb(255,255,255)", borderColor: "hsl(202, 8%, 80%)"}}>
+                            <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>Education</h1>
