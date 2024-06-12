@@ -3,10 +3,17 @@
 import Container from "@/components/Container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
-import { useState, useEffect } from "react";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
+import {
+    Avatar,
+    AvatarImage,
+    AvatarFallback } from "./ui/avatar";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetTrigger } from "./ui/sheet";
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Heading2 } from "@/components/text/Headings";
 
 const routs = [
     {
@@ -24,35 +31,18 @@ const routs = [
 ];
 
 const Header = () => {
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
-
-        handleScroll();
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    });
-
     return (
-        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 border-b bg-primary-foreground z-50`}>
+        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 border-b bg-white z-50`}>
             <Container>
                 <div className={"px-4 flex h-12 items-center justify-between w-full"}>
-                    <div className={"flex items-center justify-between"}>
+                    <div className={"flex items-center justify-center"}>
                         <Avatar>
-                            <AvatarImage src="/IMG_0003-Enhanced-NR.jpg" />
+                            <AvatarImage src="/profile.jpg" />
                             <AvatarFallback>JBJ</AvatarFallback>
                         </Avatar>
-                        <Link href={"/"} className={"ml-4"}>
-                            <h1 className={"text-2xl font-bold invisible md:visible lg:visible"}>
-                                Jacob Bekele Jansson
-                            </h1>
-                        </Link>
+                        <Heading2 className={"ml-4 invisible md:visible lg:visible"}>
+                            Jacob Bekele Jansson
+                        </Heading2>
                     </div>
                     <Sheet>
                         <SheetTrigger>

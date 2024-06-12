@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from 'gray-matter';
 import path from 'path';
 import {Project} from "@/lib/types";
-import {unified} from "unified";
+import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";

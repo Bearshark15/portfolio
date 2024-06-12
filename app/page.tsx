@@ -3,20 +3,30 @@ import Container from "@/components/Container";
 import ProjectList from "@/components/ProjectList";
 import ResumeEntryList from "@/components/ResumeEntryList";
 import HeroHome from "@/components/HeroHome";
+import { getSortedProjects } from "@/lib/projects";
+import Paragraph from "@/components/text/Paragraph";
+import {
+    Heading1,
+    Heading3,
+    Subtitle,
+    Title
+} from "@/components/text/Headings";
 import {
     Braces,
     GraduationCapIcon, Linkedin,
     LucideMail,
     PhoneIcon, Smile,
 } from "lucide-react";
-
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {Button} from "@/components/ui/button";
 import ResumeData from "@/lib/resume";
-import {getSortedProjects} from "@/lib/projects";
-import Paragraph from "@/components/text/Paragraph";
-import {Heading1, Heading2, Heading3, Subtitle, Title} from "@/components/text/Headings";
+import Image from "next/image";
 
 export default function Home() {
     const projects = getSortedProjects();
@@ -122,7 +132,7 @@ export default function Home() {
                     </div>
                     <div className={"grid grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-1"}>
                         <div className={"col-span-1 flex flex-col items-center justify-center"}>
-                            <img src={"/IMG_0003-Enhanced-NR.jpg"} alt={"pic"} className={"rounded-full w-80"}/>
+                            <Image src={"/profile.jpg"} alt={"pic"} className={"rounded-full"} width={320} height={320}/>
                             <div className={"flex flex-col items-center justify-center mt-3 text-center lg:items-start lg:justify-start lg:hidden"}>
                                 <Heading1 className={"text-center"}>Jacob Bekele Jansson</Heading1>
                                 <Subtitle className={"text-center"}>Game Programmer/Software Developer</Subtitle>

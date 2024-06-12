@@ -5,7 +5,7 @@ const Paragraph = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HT
     ({ className, ...props }, ref) => (
     <p
         ref={ref}
-        className={cn("my-2", className)}
+        className={cn("my-1", className)}
         {...props}
     />
 ));

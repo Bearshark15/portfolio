@@ -5,7 +5,6 @@ import {cn} from "@/utils/cn";
 
 import { Open_Sans, Poppins } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const fontSans = Open_Sans({
     subsets: ["latin"],

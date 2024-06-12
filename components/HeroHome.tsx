@@ -2,7 +2,6 @@
 
 import { Button } from './ui/button'
 import Link from 'next/link'
-import {useEffect, useState} from "react";
 import {Heading3, Title} from "@/components/text/Headings";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -17,45 +16,19 @@ const images : string[] = [
 ]
 
 export default function HeroHome() {
-
-    const [photo, setPhoto] = useState(1);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            change();
-        }, 2000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [photo]);
-
-    const change = () => {
-        if (photo === images.length - 1) {
-            setPhoto(0);
-            return;
-        }
-
-        setPhoto((prev) => prev + 1);
-    };
-
-    const returnPhotoURL = () => {
-        return images[photo];
-    };
-
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({delay: 2000})])
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({delay: 3000})])
 
     return (
-        <div className={"relative h-[35rem]"}>
-            <div className={"embla h-full w-full"} ref={emblaRef}>
+        <section className={"relative h-[35rem]"}>
+            <section className={"embla h-full w-full"} ref={emblaRef}>
                 <div className={"embla__container w-full h-full"}>
                     {images.map((image, index) => (
                       <div key={index} className={"embla__slide w-full h-full"}
                       style={{backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover"}}/>
                     ))}
                 </div>
-            </div>
-            <div className={"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10/12"}>
+            </section>
+            <section className={"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10/12"}>
                 <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
                     <div className={"text-center bg-white dark:bg-black bg-opacity-85 py-10 border-2"}>
                     <Title className="tracking-tight sm:text-5xl">
@@ -71,7 +44,7 @@ export default function HeroHome() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </section>
     )
 }

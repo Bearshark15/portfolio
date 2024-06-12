@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
-import {Project} from "@/lib/types";
-import {Heading1, Heading2, Heading3, Subtitle} from "@/components/text/Headings";
+import { Project } from "@/lib/types";
+import { Heading3, Subtitle } from "@/components/text/Headings";
 
 interface ProjectCardProps {
     project: Project;
@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             src={project.thumbnail}
                             alt={project.title}
                             fill
-                            className={"aspect-square object-cover rounded-lg transition-all duration-300 group-hover:scale-105"}
+                            className={"aspect-square object-cover rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-card group-hover:translate-y-2"}
                             sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
                         />
                     </div>
