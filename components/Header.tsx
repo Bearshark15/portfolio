@@ -10,10 +10,6 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const routs = [
     {
-        label: 'Background',
-        href: '#background'
-    },
-    {
         label: 'Portfolio',
         href: '#portfolio'
     },

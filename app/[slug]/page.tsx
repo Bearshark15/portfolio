@@ -8,7 +8,7 @@ import {getProject} from "@/lib/projects";
 
 async function getProjectFromParams(slug: string ) {
     const project = await getProject(slug);
-    if (!project || !project.published) {
+    if (!project) {
         notFound();
     }
     return project;
@@ -34,7 +34,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                 </div>
             </section>
             <Container>
-                <article dangerouslySetInnerHTML={{__html: project.contentHtml}} className={"article"}/>
+                <article dangerouslySetInnerHTML={{__html: project.published ? project.contentHtml : "<h1>Coming Soon!</h1>"}} className={"article"}/>
             </Container>
             <div className={"fixed top-5 left-5"}>
                 <Link href={"/#portfolio"}>

@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from 'gray-matter';
 import path from 'path';
 import {Project} from "@/lib/types";
-import { unified } from "unified";
+import {unified} from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -55,18 +55,15 @@ async function parseMarkdown(markdown: string) {
 }
 
 export function getSortedProjects()  {
-    const projects = getAllProjects().sort((a, b) => {
+    return getAllProjects().sort((a, b) => {
         if (a.priority < b.priority) {
             return 1;
         } else if (a.priority > b.priority) {
             return -1;
-        }
-        else {
+        } else {
             return 0;
         }
     });
-
-    return projects.filter(project => project.published);
 }
 
 export async function getProject(id: string) {

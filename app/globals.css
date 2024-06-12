@@ -101,8 +101,8 @@
   @apply pl-5 italic border-l-2 border-neutral-600 border-opacity-40;
 }
 
-.article > mark {
-  @apply bg-yellow-300;
+.article > p > a {
+  @apply hover:underline text-blue-700;
 }
 
 pre {
@@ -124,7 +124,7 @@ code > [data-line]::before {
   /* Other styling */
   display: inline-block;
   width: 1rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   text-align: right;
   color: gray;
 }

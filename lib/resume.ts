@@ -20,7 +20,7 @@ const ResumeData: Pair[] = [
                 key: 2,
                 title: "Game Development",
                 subtitle: "Engines",
-                description: "Unity, Unreal Engine, Scrum",
+                description: "Unity, Unreal Engine, OpenGL, Scrum",
                 date: "",
             },
             {

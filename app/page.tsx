@@ -35,9 +35,9 @@ export default function Home() {
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>About Me</h1>
                                     <p style={{color: "hsl(208, 8%, 70%)"}} className={""}>
-                                        Happy chap with a passion for problem-solving and a sharp eye for detail.
+                                        Happy chap with a passion for programming and a sharp eye for detail.
                                         Team player who loves to celebrate success together with others.
-                                        Take pride in always deliver at the top of my ability.
+                                        Take pride in always delivering to the best of my ability.
                                         Often dream in code.
                                     </p>
                                 </div>
@@ -47,10 +47,11 @@ export default function Home() {
                                     <Braces className={"h-16 w-16"}></Braces>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>Skills</h1>
                                     <p style={{color: "hsl(208, 8%, 70%)"}}>
-                                        Unity, Unreal, <br/>
-                                        Git, Plastic SCM, <br/>
-                                        C#, C++, Java, <br/>
-                                        Next.JS, Html, CSS <br/>
+                                        C#, C++, Java, TypeScript,
+                                        Unity, Unreal Engine, Scrum,
+                                        Visual Studio, Visual Studio Code,
+                                        JetBrains Rider, Jira, Plastic SCM,
+                                        Git, GitHub, and more.
                                     </p>
                                 </div>
                             </div>
@@ -59,9 +60,9 @@ export default function Home() {
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
                                     <h1 className={"text-xl lg:text-2xl font-bold"}>Education</h1>
                                     <p style={{color: "hsl(208, 8%, 70%)"}}>
-                                        Uppsala University, <br/>
-                                        San Diego State University, <br/>
-                                        NTI Gymmnasiet
+                                        Bachelor’s Degree in Game Design and Programming, Uppsala University.<br/>
+                                        Computer Science and Java programming, San Diego State University. <br/>
+                                        Software and Game Development, NTI Gymnasiet. <br/>
                                     </p>
                                 </div>
                             </div>
@@ -87,8 +88,8 @@ export default function Home() {
                             <h1 id={"resume"} className={"text-4xl font-bold text-center"}>Resume</h1>
                             <h1 className={"text-2xl font-bold my-5"}>About Me</h1>
                             <p className={"xl:w-1/2"}>
-                                I am a 23-year-old Game Programmer and Software Developer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
-                                I love the creative process of making games, where different skills and personalities come together. Being part of the full cycle, from idea to finished product, is especially rewarding.<br/><br/>
+                                I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
+                                I love the creative process of making games, where different skills and personalities come together.<br/><br/>
                                 As a programmer my job is to solve problems and make things work, and that’s what I love about it. My teammates know that I am reliable and do what is necessary to find a solution.
                                 As a person I take pride in always delivering to the best of my ability. I am also careful about details. Clean code is for example very satisfying. I like to make sure my code is as readable as I can make it. It not only looks nice, but it also makes it easier for others to understand.<br/><br/>
                                 While I’m confident that I have a solid foundation to start working on a professional production, I’m still very eager to learn new ways of working, new ways of programming, and new tools as well. I’m always looking for ways to improve and I’m not afraid to ask for help when I need it.
@@ -120,9 +121,13 @@ export default function Home() {
                     <div className={"grid grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-1"}>
                         <div className={"col-span-1 flex flex-col items-center justify-center"}>
                             <img src={"/IMG_0003-Enhanced-NR.jpg"} alt={"pic"} className={"rounded-full w-80"}/>
+                            <div className={"flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:hidden"}>
+                                <h1 className={"text-4xl font-bold text-center"}>Jacob Bekele Jansson</h1>
+                                <p className={"text-2xl text-center"}>Game Programmer</p>
+                            </div>
                         </div>
                         <div className={"mr-10 col-span-2"}>
-                            <div className={"flex flex-col items-center justify-center text-center lg:items-start lg:justify-start"}>
+                            <div className={"hidden lg:flex flex-col items-center justify-center text-center lg:items-start lg:justify-start"}>
                                 <h1 className={"text-4xl font-bold text-center"}>Jacob Bekele Jansson</h1>
                                 <p className={"text-2xl text-center"}>Game Programmer</p>
                             </div>
