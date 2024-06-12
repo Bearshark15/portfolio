@@ -4,6 +4,8 @@ import { Button } from './ui/button'
 import Link from 'next/link'
 import {useEffect, useState} from "react";
 import {Heading3, Title} from "@/components/text/Headings";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const images : string[] = [
     "/ballbash/ss_f22b40de80d7f12a1f5b55c820880ecd6a581469.800x600.jpg",
@@ -41,16 +43,22 @@ export default function HeroHome() {
         return images[photo];
     };
 
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({delay: 2000})])
+
     return (
-        <div className={"relative"} style={{
-            backgroundImage: `url(${returnPhotoURL()})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",}}>
-            <div className="isolate px-6 pt-14 lg:px-8">
+        <div className={"relative h-[35rem]"}>
+            <div className={"embla h-full w-full"} ref={emblaRef}>
+                <div className={"embla__container w-full h-full"}>
+                    {images.map((image, index) => (
+                      <div key={index} className={"embla__slide w-full h-full"}
+                      style={{backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover"}}/>
+                    ))}
+                </div>
+            </div>
+            <div className={"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10/12"}>
                 <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
                     <div className={"text-center bg-white dark:bg-black bg-opacity-85 py-10 border-2"}>
-                        <Title className="tracking-tight sm:text-5xl">
+                    <Title className="tracking-tight sm:text-5xl">
                             Jacob Bekele Jansson
                         </Title>
                         <Heading3 className="tracking-tight sm:text-3xl mt-3">

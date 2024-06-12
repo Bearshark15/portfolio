@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
 import {Project} from "@/lib/types";
+import {Heading1, Heading2, Heading3, Subtitle} from "@/components/text/Headings";
 
 interface ProjectCardProps {
     project: Project;
@@ -30,8 +31,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 </CardContent>
                 <CardFooter className={"flex-col items-start"}>
                     <div>
-                        <p className={"font-semibold text-lg"}>{project.title}</p>
-                        <p className={"text-sm"}>{project.description}</p>
+                        <Heading3 className={""}>{project.title}</Heading3>
+                        <Subtitle className={""}>{project.description}</Subtitle>
                     </div>
                 </CardFooter>
             </Card>

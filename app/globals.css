@@ -137,5 +137,15 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
 
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+}
+
 
 

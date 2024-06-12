@@ -88,7 +88,7 @@ export default function Home() {
                     <Container>
                         <div className={"mb-10 mt-10"}>
                             <Title id={"resume"} className={"text-center"}>Resume</Title>
-                            <Heading2 className={"my-5"}>About Me</Heading2>
+                            <Heading1 className={"my-5"}>About Me</Heading1>
                             <Paragraph className={"xl:w-1/2"}>
                                 I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
                                 I love the creative process of making games, where different skills and personalities come together.<br/><br/>
@@ -118,20 +118,20 @@ export default function Home() {
             <section className={"py-10"}>
                 <Container>
                     <div className={"mb-20 text-center"}>
-                        <h1 id={"contact"} className={"text-4xl font-bold"}>Contact</h1>
+                        <Title id={"contact"}>Contact</Title>
                     </div>
                     <div className={"grid grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-1"}>
                         <div className={"col-span-1 flex flex-col items-center justify-center"}>
                             <img src={"/IMG_0003-Enhanced-NR.jpg"} alt={"pic"} className={"rounded-full w-80"}/>
-                            <div className={"flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:hidden"}>
-                                <Title className={"text-center"}>Jacob Bekele Jansson</Title>
-                                <Subtitle className={"text-center"}>Game Programmer</Subtitle>
+                            <div className={"flex flex-col items-center justify-center mt-3 text-center lg:items-start lg:justify-start lg:hidden"}>
+                                <Heading1 className={"text-center"}>Jacob Bekele Jansson</Heading1>
+                                <Subtitle className={"text-center"}>Game Programmer/Software Developer</Subtitle>
                             </div>
                         </div>
                         <div className={"mr-10 col-span-2"}>
                             <div className={"hidden lg:flex flex-col items-center justify-center text-center lg:items-start lg:justify-start"}>
-                                <Title className={"text-center"}>Jacob Bekele Jansson</Title>
-                                <Subtitle className={"text-center"}>Game Programmer</Subtitle>
+                                <Heading1 className={"text-center"}>Jacob Bekele Jansson</Heading1>
+                                <Subtitle className={"text-center"}>Game Programmer/Software Developer</Subtitle>
                             </div>
                             <div className={"my-10 flex flex-col gap-3"}>
                                 <div className={"flex flex-row items-center"}>
