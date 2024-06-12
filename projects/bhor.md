@@ -6,7 +6,7 @@ thumbnail: /bhor/thumbnail.png
 bannerImage: /bhor/banner.png
 logoImage: /bhor/logo.png
 demoLink: https://kuehldy.itch.io/bhor
-published: true
+published: false
 ---
 
 # Background

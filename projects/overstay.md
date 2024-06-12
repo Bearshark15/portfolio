@@ -6,7 +6,7 @@ thumbnail: /overstay/thumbnail.png
 bannerImage: /overstay/OverStay.png
 logoImage: /overstay/logo.png
 demoLink: https://vlada-morgun.itch.io/overstay
-published: true
+published: false
 ---
 
 # Background

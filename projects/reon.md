@@ -6,7 +6,7 @@ thumbnail: /reon/thumbnail.png
 bannerImage: /reon/SS1.png
 logoImage: /reon/logo.png
 demoLink: https://farukosm.itch.io/reon
-published: true
+published: false
 ---
 
 # Background
