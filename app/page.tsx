@@ -15,6 +15,8 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import ResumeData from "@/lib/resume";
 import {getSortedProjects} from "@/lib/projects";
+import Paragraph from "@/components/text/Paragraph";
+import {Heading1, Heading2, Heading3, Subtitle, Title} from "@/components/text/Headings";
 
 export default function Home() {
     const projects = getSortedProjects();
@@ -26,44 +28,44 @@ export default function Home() {
                 <Container>
                     <div className={"flex flex-col items-center justify-center"}>
                         <div className={"mt-14 mb-14 text-center"}>
-                            <h1 id={"background"} className={"text-4xl font-bold"}>Welcome to my portfolio site!</h1>
-                            <p>This website was written using Next.JS and Tailwind CSS in JetBrains WebStorm</p>
+                            <Title id={"background"}>Welcome to my portfolio site!</Title>
+                            <Subtitle>This website was written using Next.JS and Tailwind CSS in JetBrains WebStorm</Subtitle>
                         </div>
                         <div className={"h-full flex flex-col gap-5 md:gap-20 md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
                             <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Smile className={"h-16 w-16"}></Smile>
-                                    <h1 className={"text-xl lg:text-2xl font-bold"}>About Me</h1>
-                                    <p style={{color: "hsl(208, 8%, 70%)"}} className={""}>
+                                    <Heading3 className={"lg:text-2xl"}>About Me</Heading3>
+                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}} className={""}>
                                         Happy chap with a passion for programming and a sharp eye for detail.
                                         Team player who loves to celebrate success together with others.
                                         Take pride in always delivering to the best of my ability.
                                         Often dream in code.
-                                    </p>
+                                    </Paragraph>
                                 </div>
                             </div>
                             <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Braces className={"h-16 w-16"}></Braces>
-                                    <h1 className={"text-xl lg:text-2xl font-bold"}>Skills</h1>
-                                    <p style={{color: "hsl(208, 8%, 70%)"}}>
+                                    <Heading3 className={"lg:text-2xl"}>Skills</Heading3>
+                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
                                         C#, C++, Java, TypeScript,
                                         Unity, Unreal Engine, Scrum,
                                         Visual Studio, Visual Studio Code,
                                         JetBrains Rider, Jira, Plastic SCM,
                                         Git, GitHub, and more.
-                                    </p>
+                                    </Paragraph>
                                 </div>
                             </div>
                             <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
-                                    <h1 className={"text-xl lg:text-2xl font-bold"}>Education</h1>
-                                    <p style={{color: "hsl(208, 8%, 70%)"}}>
+                                    <Heading3 className={"lg:text-2xl"}>Education</Heading3>
+                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
                                         Bachelor’s Degree in Game Design and Programming, Uppsala University.<br/>
                                         Computer Science and Java programming, San Diego State University. <br/>
                                         Software and Game Development, NTI Gymnasiet. <br/>
-                                    </p>
+                                    </Paragraph>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +79,7 @@ export default function Home() {
             </section>
             <section>
                 <Container>
-                    <h1 id="portfolio" className={"text-4xl font-bold text-center p-20"}>Portfolio</h1>
+                    <Title id="portfolio" className={"text-center p-20"}>Portfolio</Title>
                     <ProjectList projects={projects}/>
                 </Container>
             </section>
@@ -85,15 +87,15 @@ export default function Home() {
                 <div className="w-full">
                     <Container>
                         <div className={"mb-10 mt-10"}>
-                            <h1 id={"resume"} className={"text-4xl font-bold text-center"}>Resume</h1>
-                            <h1 className={"text-2xl font-bold my-5"}>About Me</h1>
-                            <p className={"xl:w-1/2"}>
+                            <Title id={"resume"} className={"text-center"}>Resume</Title>
+                            <Heading2 className={"my-5"}>About Me</Heading2>
+                            <Paragraph className={"xl:w-1/2"}>
                                 I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
                                 I love the creative process of making games, where different skills and personalities come together.<br/><br/>
                                 As a programmer my job is to solve problems and make things work, and that’s what I love about it. My teammates know that I am reliable and do what is necessary to find a solution.
                                 As a person I take pride in always delivering to the best of my ability. I am also careful about details. Clean code is for example very satisfying. I like to make sure my code is as readable as I can make it. It not only looks nice, but it also makes it easier for others to understand.<br/><br/>
                                 While I’m confident that I have a solid foundation to start working on a professional production, I’m still very eager to learn new ways of working, new ways of programming, and new tools as well. I’m always looking for ways to improve and I’m not afraid to ask for help when I need it.
-                            </p>
+                            </Paragraph>
                         </div>
                         <Accordion type={"multiple"} className={""}>
                             {ResumeData.map((data, index) => (
@@ -122,14 +124,14 @@ export default function Home() {
                         <div className={"col-span-1 flex flex-col items-center justify-center"}>
                             <img src={"/IMG_0003-Enhanced-NR.jpg"} alt={"pic"} className={"rounded-full w-80"}/>
                             <div className={"flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:hidden"}>
-                                <h1 className={"text-4xl font-bold text-center"}>Jacob Bekele Jansson</h1>
-                                <p className={"text-2xl text-center"}>Game Programmer</p>
+                                <Title className={"text-center"}>Jacob Bekele Jansson</Title>
+                                <Subtitle className={"text-center"}>Game Programmer</Subtitle>
                             </div>
                         </div>
                         <div className={"mr-10 col-span-2"}>
                             <div className={"hidden lg:flex flex-col items-center justify-center text-center lg:items-start lg:justify-start"}>
-                                <h1 className={"text-4xl font-bold text-center"}>Jacob Bekele Jansson</h1>
-                                <p className={"text-2xl text-center"}>Game Programmer</p>
+                                <Title className={"text-center"}>Jacob Bekele Jansson</Title>
+                                <Subtitle className={"text-center"}>Game Programmer</Subtitle>
                             </div>
                             <div className={"my-10 flex flex-col gap-3"}>
                                 <div className={"flex flex-row items-center"}>

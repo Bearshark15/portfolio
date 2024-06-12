@@ -5,7 +5,7 @@ const Title = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHead
     ({ className, ...props }, ref) => (
     <h1
         ref={ref}
-        className={cn("text-5xl font-bold text-primary mb-1", className)}
+        className={cn("text-4xl font-bold mb-1", className)}
         {...props}
     />
 ));
@@ -15,7 +15,7 @@ const Subtitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLH
     ({ className, ...props }, ref) => (
     <h2
         ref={ref}
-        className={cn("text-xl font-light text-primary/80 my-1", className)}
+        className={cn("text-xl font-light", className)}
         {...props}
     />
 ));
@@ -25,7 +25,7 @@ const Heading1 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLH
     ({ className, ...props }, ref) => (
     <h1
         ref={ref}
-        className={cn("text-3xl font-bold text-primary mb-2 mt-5", className)}
+        className={cn("text-3xl font-bold", className)}
         {...props}
     />
 ));
@@ -35,7 +35,7 @@ const Heading2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLH
     ({ className, ...props }, ref) => (
     <h2
         ref={ref}
-        className={cn("text-2xl font-semibold text-primary mb-2 mt-5", className)}
+        className={cn("text-2xl font-semibold", className)}
         {...props}
     />
 ));
@@ -45,7 +45,7 @@ const Heading3 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLH
     ({ className, ...props }, ref) => (
     <h3
         ref={ref}
-        className={cn("text-xl font-semibold text-primary mb-2 mt-5", className)}
+        className={cn("text-xl font-semibold", className)}
         {...props}
     />
 ));

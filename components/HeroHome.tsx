@@ -3,6 +3,7 @@
 import { Button } from './ui/button'
 import Link from 'next/link'
 import {useEffect, useState} from "react";
+import {Heading3, Title} from "@/components/text/Headings";
 
 const images : string[] = [
     "/ballbash/ss_f22b40de80d7f12a1f5b55c820880ecd6a581469.800x600.jpg",
@@ -49,12 +50,12 @@ export default function HeroHome() {
             <div className="isolate px-6 pt-14 lg:px-8">
                 <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
                     <div className={"text-center bg-white dark:bg-black bg-opacity-85 py-10 border-2"}>
-                        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                        <Title className="tracking-tight sm:text-5xl">
                             Jacob Bekele Jansson
-                        </h1>
-                        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl mt-3">
+                        </Title>
+                        <Heading3 className="tracking-tight sm:text-3xl mt-3">
                             Software Developer, Game Programmer <br /> Based in Stockholm, Sweden
-                        </h2>
+                        </Heading3>
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <Button variant={"outline"}>
                                 <Link href="#portfolio">View Portfolio</Link>
