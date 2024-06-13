@@ -18,7 +18,7 @@ const ResumeEntryCard: React.FC<ResumeEntryCardProps> = ({ entry }) => {
                         <p>{entry.date}</p>
                     </div>
                 </div>
-                <Subtitle className={"text-gray-400"}>{entry.subtitle}</Subtitle>
+                <Subtitle className={"text-gray-400 font-normal"}>{entry.subtitle}</Subtitle>
                 <Paragraph className={"lg:w-1/2 w-full"}>{entry.description}</Paragraph>
             </div>
         </section>

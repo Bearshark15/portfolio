@@ -46,7 +46,7 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <Heading3 className={"lg:text-2xl"}>About Me</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}} className={""}>
+                                    <Paragraph>
                                         Happy chap with a passion for programming and a sharp eye for detail.
                                         Team player who loves to celebrate success together with others.
                                         Take pride in always delivering to the best of my ability.
@@ -58,7 +58,7 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Braces className={"h-16 w-16"}></Braces>
                                     <Heading3 className={"lg:text-2xl"}>Skills</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
+                                    <Paragraph>
                                         C#, C++, Java, TypeScript,
                                         Unity, Unreal Engine, Scrum,
                                         Visual Studio, Visual Studio Code,
@@ -71,9 +71,10 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
                                     <Heading3 className={"lg:text-2xl"}>Education</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
+                                    {/*style={{color: "hsl(208, 8%, 70%)"}}*/}
+                                    <Paragraph>
                                         Bachelor’s Degree in Game Design and Programming, Uppsala University.<br/>
-                                        Computer Science and Java programming, San Diego State University. <br/>
+                                        Java programming, San Diego State University. <br/>
                                         Software and Game Development, NTI Gymnasiet. <br/>
                                     </Paragraph>
                                 </div>
