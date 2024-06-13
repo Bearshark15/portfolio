@@ -1,7 +1,7 @@
 import { ResumeEntry } from "@/lib/types";
 import React from "react";
 import Paragraph from "@/components/text/Paragraph";
-import {Heading1, Heading2, Subtitle, Title} from "@/components/text/Headings";
+import { Heading2, Subtitle } from "@/components/text/Headings";
 
 interface ResumeEntryCardProps {
     entry: ResumeEntry;
