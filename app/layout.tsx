@@ -4,7 +4,6 @@ import React from "react";
 import {cn} from "@/utils/cn";
 
 import { Open_Sans, Poppins } from "next/font/google";
-import ThemeProvider from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react"
 
 const fontSans = Open_Sans({
@@ -27,9 +26,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     return (
         <html lang="en" className={"w-full h-full"}>
             <body className={cn(fontSans.variable, poppins.variable, "h-full w-full")}>
-                <ThemeProvider attribute={"class"} defaultTheme={"system"} enableSystem={true}>
-                    {children}
-                </ThemeProvider>
+                {children}
                 <Analytics/>
             </body>
         </html>

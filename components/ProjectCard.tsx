@@ -17,7 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             href={`/${project.id}`}
             className={"group outline-0 focus:ring-2 hover:ring-2 hover:shadow-xl ring-primary transition duration-300 rounded-lg lg:w-full md:w-10/12 w-10/12 mx-auto my-auto"}>
             
-            <Card className={"rounded-lg border-2"}>
+            <Card className={"rounded-lg"}>
                 <CardContent className={"pt-4"}>
                     <div className={"aspect-square relative bg-foreground/5 dark:bg-background rounded-lg"}>
                         <Image
@@ -31,8 +31,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 </CardContent>
                 <CardFooter className={"flex-col items-start"}>
                     <div>
-                        <Heading3 className={""}>{project.title}</Heading3>
-                        <Subtitle className={""}>{project.description}</Subtitle>
+                        <Heading3 className={"font-bold"}>{project.title}</Heading3>
+                        <Subtitle className={"font-normal"}>{project.description}</Subtitle>
                     </div>
                 </CardFooter>
             </Card>

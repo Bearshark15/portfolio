@@ -32,7 +32,7 @@ const routs = [
 
 const Header = () => {
     return (
-        <header id={"navbar"} className={`transition-opacity sticky top-0 sm:flex sm:justify-between py-3 border-b bg-white z-50`}>
+        <header id={"navbar"} className={`sticky top-0 sm:flex sm:justify-between py-3 border-b bg-white backdrop-blur-3xl bg-opacity-65 z-50`}>
             <Container>
                 <div className={"px-4 flex h-12 items-center justify-between w-full"}>
                     <div className={"flex items-center justify-center"}>

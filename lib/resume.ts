@@ -65,7 +65,7 @@ const ResumeData: Pair[] = [
                 key: 1,
                 title: "Uppsala University",
                 subtitle: "Bachelor's Degree in Game Design and Programming",
-                description: "At Uppsala University Campus Gotland I studied game design and programming. I learned programing in C++ and how to work and collaborate on projects using agile methodologies such as scrum and kanban alongside students from other disciplines like project management and graphic design. Campus Gotland is a very international campus and many of my classmates came from all over the world, which gave me a feel for what it’s like to work with people from different countries and cultures and I believe this experience will be very useful to me in my future career.",
+                description: "At Uppsala University Campus Gotland I studied game design and programming. I learned programing in C++ and how to work and collaborate on projects using agile methodologies such as scrum and kanban alongside students from other disciplines like project management and graphic design.<br/><br> Campus Gotland is a very international campus and many of my classmates came from all over the world, which gave me a feel for what it’s like to work with people from different countries and cultures and I believe this experience will be very useful to me in my future career.",
                 date: "Aug 2021-May 2024",
             },
             {
@@ -77,9 +77,9 @@ const ResumeData: Pair[] = [
             },
             {
                 key: 3,
-                title: "NTI Gymnasiet (High School)",
+                title: "NTI Gymnasiet",
                 subtitle: "Software Development with focus on Game Development",
-                description: "I studied software development with a focus on game development. I learned programming in C# and how to use Unity and Unreal Engine.",
+                description: "NTI Gymnasiet is a high school with a tech, science, and IT profile. I studied software development with a focus on game development. I learned programming in C# and how to use Unity and Unreal Engine.",
                 date: "Aug 2017-June 2020",
             },
         ]
@@ -96,7 +96,7 @@ const ResumeData: Pair[] = [
             },
             {
                 key: 2,
-                title: "Securus Säkerhet I Sverige AB",
+                title: "Securus Säkerhet",
                 subtitle: "Security Guard",
                 description: "I worked as a security guard at the World Trade Center building in Stockholm. I was responsible manning the reception, patrolling the building, checking for security breaches, and reporting any incidents.",
                 date: "June 2020-Sept 2020"

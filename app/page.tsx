@@ -39,18 +39,17 @@ export default function Home() {
                     <div className={"flex flex-col items-center justify-center"}>
                         <div className={"mt-14 mb-14 text-center"}>
                             <Title id={"background"}>Welcome to my portfolio site!</Title>
-                            <Subtitle>This website was written using Next.JS and Tailwind CSS in JetBrains WebStorm</Subtitle>
+                            <Subtitle>This website was written using Next.js and Tailwind CSS in JetBrains WebStorm.</Subtitle>
                         </div>
-                        <div className={"h-full flex flex-col gap-5 md:gap-20 md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
+                        <div className={"h-full flex flex-col gap-5 md:gap-10 lg:gap-20 md:flex-row lg:flex-row items-center justify-evenly pb-14"}>
                             <div className={"about-me-card"}>
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <Heading3 className={"lg:text-2xl"}>About Me</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}} className={""}>
-                                        Happy chap with a passion for programming and a sharp eye for detail.
+                                    <Paragraph>
+                                        A cool, calm and collected programmer with a sharp eye for detail.
                                         Team player who loves to celebrate success together with others.
                                         Take pride in always delivering to the best of my ability.
-                                        Often dream in code.
                                     </Paragraph>
                                 </div>
                             </div>
@@ -58,7 +57,7 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <Braces className={"h-16 w-16"}></Braces>
                                     <Heading3 className={"lg:text-2xl"}>Skills</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
+                                    <Paragraph>
                                         C#, C++, Java, TypeScript,
                                         Unity, Unreal Engine, Scrum,
                                         Visual Studio, Visual Studio Code,
@@ -71,10 +70,11 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
                                     <Heading3 className={"lg:text-2xl"}>Education</Heading3>
-                                    <Paragraph style={{color: "hsl(208, 8%, 70%)"}}>
-                                        Bachelor’s Degree in Game Design and Programming, Uppsala University.<br/>
+                                    {/*style={{color: "hsl(208, 8%, 70%)"}}*/}
+                                    <Paragraph>
+                                        Bachelor’s Degree in Game Design and Programming, Uppsala University. <br/>
                                         Computer Science and Java programming, San Diego State University. <br/>
-                                        Software and Game Development, NTI Gymnasiet. <br/>
+                                        Software and Game Development, NTI Gymnasiet.
                                     </Paragraph>
                                 </div>
                             </div>
@@ -100,11 +100,11 @@ export default function Home() {
                             <Title id={"resume"} className={"text-center"}>Resume</Title>
                             <Heading1 className={"my-5"}>About Me</Heading1>
                             <Paragraph className={"xl:w-1/2"}>
-                                I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and Programming in June 2024.
+                                I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and programming in May 2024.
                                 I love the creative process of making games, where different skills and personalities come together.<br/><br/>
                                 As a programmer my job is to solve problems and make things work, and that’s what I love about it. My teammates know that I am reliable and do what is necessary to find a solution.
                                 As a person I take pride in always delivering to the best of my ability. I am also careful about details. Clean code is for example very satisfying. I like to make sure my code is as readable as I can make it. It not only looks nice, but it also makes it easier for others to understand.<br/><br/>
-                                While I’m confident that I have a solid foundation to start working on a professional production, I’m still very eager to learn new ways of working, new ways of programming, and new tools as well. I’m always looking for ways to improve and I’m not afraid to ask for help when I need it.
+                                While I am confident that I have a solid foundation to start working on a professional production, I am still very eager to learn new ways of working, new ways of programming, and new tools as well. I am always looking for ways to improve and I am not afraid to ask for help when I need it.
                             </Paragraph>
                         </div>
                         <Accordion type={"multiple"} className={""}>

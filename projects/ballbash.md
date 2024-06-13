@@ -15,7 +15,7 @@ BallBash is a local party racing game for up to 4 people. I worked on this game 
 
 ## Ability System
 
-This is an ongoing project, and it has gone through a few iterations and redesigns, a major one being the ability system. In the beginning of the project the idea was that the player would be able to create a set of abilities, represented by a deck of cards, in the in-game menu and select which one they wanted to use along with a character skin before the game started. This has later been changed to characters with their own predefined set abilities similar to how a hero shooter like Overwatch handles their characters.
+This is an ongoing project, and it has gone through a few iterations and redesigns, a major one being the ability system. In the beginning of the project the idea was that the player would be able to create a set of abilities, represented by a deck of cards, in the in-game menu and select which one they wanted to use along with a character skin before the game started. This has later been changed to characters with their own predefined set abilities similar to how a hero shooter like Overwatch handles their characters. The players have three abilities readily available at any given time and can use them as long as they have accumulated enough energy to do so.
 
 Throughout this project I have made extensive use of Unity's ScriptableObject's and in this system I made three core classes deriving from ScriptaleObject: the `Character` class, the `Ability` class, and the `AbilityDeck` class. I choose this approach to make it easier for the designers to create and manage all the different character definitions and ability combinations in the editor. 
 
@@ -98,3 +98,44 @@ public class PlayerAbilityManager : MonoBehaviour
 ```
 
 The abilities are managed using three collections: a Queue, a List, and an Array with three elements. In the game the players abilities are represented by a deck of cards where the Queue is the players deck and the Array is the players hand that can hold three cards max. When the game starts the Queue is populated with the abilities from an instance of the AbilityDeck class. The first three abilities are immediately popped and put in the abilities array. When the player uses an ability from their hand it's state is changed to Active and taken out of the Array and placed in the List which holds all currently active abilities. A new ability is then popped from the Queue and put in the Array at the index that just became empty/null. When an ability expires it's removed from the List, re-initialized and placed at the end of the Queue.
+
+## Level Generation
+
+The levels in BallBash are made up of the track the players race on and the environment around the track, both of which are generated at runtime. Of the two i was tasked with writing the logic for the track generation. The track is made up of one to three lanes and is divided into segments which are randomly puzzled together as the players progress further along the track. 
+
+The segments consists of one to three lanes and some have obstacles, energy pickups, speed boosters, etc, placed in the lanes. The models necessary for the segments were made by the artists and made into Unity prefabs by the designers.
+
+To manage this I wrote three MonoBehaviours: `LevelGenerator`, `Segment`, and `SegmentObjectPool`. I also made a couple of ScriptableObject's to manage the data for the level and segments: `SegmentData` and `LevelData`.
+
+```csharp
+[CreateAssetMenu(fileName = "New SegmentData", menuName = "Level Generation/SegmentData")]
+public class SegmentData : ScriptableObject
+{
+    public enum Connections
+    {
+        One = 0, Two = 1, Three = 2
+    }
+    
+    [Tooltip("Prefab of the segment to spawn")]
+    public GameObject SegmentPrefab;
+    [Space]
+    [Tooltip("The number of connections, or lanes, the segment has at the point of entry")]
+    public Connections EntryConnections;
+    [Tooltip("The number of connections, or lanes, the segment has at the exit point")]
+    public Connections ExitConnections;
+    [Space]
+    [Tooltip("The spawn weight of the segment. The higher the number the more likely it is to spawn")]
+    public int SpawnWeight;
+    [Space]
+    [Tooltip("The length of the given segment")]
+    public int SegmentLength;
+}
+```
+
+The SegmentData class stores information about a specific segment that the LevelGenerator needs in order to correctly place each segment. For this the most important fields in the class are: EntryConnections, ExitConnections, and SegmentLength. 
+
+The entry- and exit connections are the number of lanes a segment has. A segment might have only three lanes or start of with three and merge into one at the end. The LevelGenerator needs to know this as it will only place a segment that has the same amount of EntryConnections as the ExitConnections of the segment right before it. The LevelGenerator also needs to know the length of each segment in order to calculate the spawn position of the next segment.
+
+
+
+The LevelGenerator and SegmentObjectPool work together to generate the track for the levels. The LevelGenerator decides when to place and remove segments from the level, at times based on some level specific conditions defined in the LevelData scriptable object. The SegmentObjectPool 
