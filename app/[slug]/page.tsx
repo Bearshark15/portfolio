@@ -24,7 +24,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                  style={{backgroundImage: `url(${project.bannerImage})`}}>
                 <div className={"h-full w-full flex flex-col items-center justify-center gap-4"}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={project.logoImage} alt={project.title} className={"max-w-96"}/>
+                    <img src={project.logoImage} alt={project.title} className={"w-7/12 md:w-5/12 lg:w-3/12 max-w-md"}/>
                     <Link href={`${project.demoLink}`}
                           passHref legacyBehavior>
                         <a target={"_blank"}>
@@ -34,7 +34,7 @@ const Project = async ({ params }: { params: { slug: string } }) => {
                 </div>
             </section>
             <Container>
-                <article dangerouslySetInnerHTML={{__html: project.published ? project.contentHtml : "<h1>Coming Soon!</h1>"}} className={"article"}/>
+                <article dangerouslySetInnerHTML={{__html: project.published ? project.contentHtml : "<h1>More Information Coming Soon!</h1>"}} className={"article"}/>
             </Container>
             <div className={"fixed top-5 left-5"}>
                 <Link href={"/#portfolio"}>

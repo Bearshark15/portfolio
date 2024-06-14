@@ -70,10 +70,9 @@ export default function Home() {
                                 <div className={"flex items-center flex-col gap-2"}>
                                     <GraduationCapIcon className={"h-16 w-16"}></GraduationCapIcon>
                                     <Heading3 className={"lg:text-2xl"}>Education</Heading3>
-                                    {/*style={{color: "hsl(208, 8%, 70%)"}}*/}
                                     <Paragraph>
-                                        Bachelor’s Degree in Game Design and Programming, Uppsala University. <br/>
-                                        Computer Science, San Diego State University. <br/>
+                                        Bachelor’s Degree in Game Design and Programming, Uppsala University.
+                                        Computer Science and Java Programming, San Diego State University.
                                         Software and Game Development, NTI Gymnasiet.
                                     </Paragraph>
                                 </div>
