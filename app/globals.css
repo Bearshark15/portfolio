@@ -65,6 +65,14 @@
   border-color: hsl(202, 8%, 80%);
 }
 
+.blurred-bg-3xl {
+  backdrop-filter: blur(64px);
+}
+
+.blurred-bg-lg {
+  backdrop-filter: blur(16px);
+}
+
 .article {
   @apply flex flex-col gap-3 text-lg tracking-wide pb-20 px-5 font-openSans lg:w-2/3 mx-auto;
 }

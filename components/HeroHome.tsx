@@ -30,7 +30,7 @@ export default function HeroHome() {
             </section>
             <section className={"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10/12"}>
                 <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-                    <div className={"text-center bg-white dark:bg-gray-950 bg-opacity-85 backdrop-blur-lg py-10 border-2 rounded-lg"}>
+                    <div className={"text-center bg-white dark:bg-gray-950 bg-opacity-85 blurred-bg-lg py-10 border-2 rounded-lg"}>
                     <Title className="tracking-tight sm:text-5xl">
                             Jacob Bekele Jansson
                         </Title>
