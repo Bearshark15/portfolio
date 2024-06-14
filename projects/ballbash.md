@@ -101,11 +101,13 @@ The abilities are managed using three collections: a Queue, a List, and an Array
 
 ## Level Generation
 
-The levels in BallBash are made up of the track the players race on and the environment around the track, both of which are generated at runtime. Of the two i was tasked with writing the logic for the track generation. The track is made up of one to three lanes and is divided into segments which are randomly puzzled together as the players progress further along the track. 
+The levels in BallBash are made up of the track the players race on and the environment around the track, both of which are generated at runtime. Of the two i was tasked with writing the logic for the track generation, and did so in collaboration with one of the other programmers on the team. The track is made up of one to three lanes and is divided into segments which are randomly puzzled together as the players progress further along the track. 
 
-The segments consists of one to three lanes and some have obstacles, energy pickups, speed boosters, etc, placed in the lanes. The models necessary for the segments were made by the artists and made into Unity prefabs by the designers.
+The segments consists of one to three lanes and some have obstacles, energy pickups, speed boosters, etc, placed in the lanes. The models necessary for the segments were made by the artists and then made into Unity prefabs by the designers.
 
 To manage this I wrote three MonoBehaviours: `LevelGenerator`, `Segment`, and `SegmentObjectPool`. I also made a couple of ScriptableObject's to manage the data for the level and segments: `SegmentData` and `LevelData`.
+
+The LevelGenerator and SegmentObjectPool work together to generate the track for the levels. The LevelGenerator decides when to place and remove segments from the level, at times based on some level specific conditions defined in the LevelData scriptable object. The SegmentObjectPool manages an object pool of segments and keeps track of all active and inactive segments in the level. When the LevelGenerator needs to place a new segment on the track it goes to the SegmentObjectPool and requests a segment that matches a set of conditions. These conditions are passed as a predicate to the SegmentObjectPool and is used to query the list of inactive segments for all segments that match the predicate. Using weighted random selection, the SegmentObjectPool selects a segment from the list and sends it to the LevelGenerator to be placed in the level.   
 
 ```csharp
 [CreateAssetMenu(fileName = "New SegmentData", menuName = "Level Generation/SegmentData")]
@@ -115,7 +117,7 @@ public class SegmentData : ScriptableObject
     {
         One = 0, Two = 1, Three = 2
     }
-    
+
     [Tooltip("Prefab of the segment to spawn")]
     public GameObject SegmentPrefab;
     [Space]
@@ -134,8 +136,8 @@ public class SegmentData : ScriptableObject
 
 The SegmentData class stores information about a specific segment that the LevelGenerator needs in order to correctly place each segment. For this the most important fields in the class are: EntryConnections, ExitConnections, and SegmentLength. 
 
-The entry- and exit connections are the number of lanes a segment has. A segment might have only three lanes or start of with three and merge into one at the end. The LevelGenerator needs to know this as it will only place a segment that has the same amount of EntryConnections as the ExitConnections of the segment right before it. The LevelGenerator also needs to know the length of each segment in order to calculate the spawn position of the next segment.
+The entry- and exit connections are the number of lanes a segment has. A segment might have only three lanes or start of with three and merge into one at the end. The LevelGenerator needs to know this as it will only place a segment that has the same amount of EntryConnections as the ExitConnections of the segment right before it. The LevelGenerator also needs to know the length of each segment in order to calculate the spawn position of the next segment. The SpawnWeight is the value used by the SegmentObjectPool when deciding which segment to give to the LevelGenerator when it requests a new segment. The higher to number, the higher the chance of it begin selected as the next segment in the track.
 
+The LevelData class is a wrapper around a list of SegmentData objects and contains all the segments that should be included as part of a specific level.
 
-
-The LevelGenerator and SegmentObjectPool work together to generate the track for the levels. The LevelGenerator decides when to place and remove segments from the level, at times based on some level specific conditions defined in the LevelData scriptable object. The SegmentObjectPool 
+The Segment MonoBehaviour sits on the segment prefabs themselves and passes important information to the LevelGenerator. It notifies the LevelGenerator if a segment should be removed from the track and returned to the object pool. It keeps track of when all players have pass through the segment and then marks that segment for removal. Once three or more segments are marked for removal, all of them are removed from the track and returned to the object pool.
