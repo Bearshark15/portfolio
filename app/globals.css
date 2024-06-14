@@ -66,10 +66,12 @@
 }
 
 .blurred-bg-3xl {
+  -webkit-backdrop-filter: blur(64px);
   backdrop-filter: blur(64px);
 }
 
 .blurred-bg-lg {
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
 
