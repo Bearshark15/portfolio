@@ -98,7 +98,7 @@ const ResumeData: Pair[] = [
                 key: 2,
                 title: "Securus Säkerhet",
                 subtitle: "Security Guard",
-                description: "I worked as a security guard at the World Trade Center building in Stockholm. I was responsible manning the reception, patrolling the building, checking for security breaches, and reporting any incidents.",
+                description: "I worked as a security guard at the World Trade Center building in Stockholm. I was responsible for manning the reception, patrolling the building, checking for security breaches, and reporting any incidents.",
                 date: "June 2020-Sept 2020"
             },
             {

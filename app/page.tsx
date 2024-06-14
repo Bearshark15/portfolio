@@ -73,7 +73,7 @@ export default function Home() {
                                     {/*style={{color: "hsl(208, 8%, 70%)"}}*/}
                                     <Paragraph>
                                         Bachelor’s Degree in Game Design and Programming, Uppsala University. <br/>
-                                        Computer Science and Java programming, San Diego State University. <br/>
+                                        Computer Science, San Diego State University. <br/>
                                         Software and Game Development, NTI Gymnasiet.
                                     </Paragraph>
                                 </div>
