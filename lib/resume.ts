@@ -63,20 +63,27 @@ const ResumeData: Pair[] = [
         resume: [
             {
                 key: 1,
+                title: "The Game Assembly",
+                subtitle: "Game Programming",
+                description: "Currently studying Game Programming at The Game Assembly where I'm learning more advanced topics related the C++ programming and game development. One of the things I enjoy learning the most is graphics programing and how to write simple game engines/frameworks.",
+                date: "Aug 2024-Present",
+            },
+            {
+                key: 2,
                 title: "Uppsala University",
                 subtitle: "Bachelor's Degree in Game Design and Programming",
                 description: "At Uppsala University Campus Gotland I studied game design and programming. I learned programing in C++ and how to work and collaborate on projects using agile methodologies such as scrum and kanban alongside students from other disciplines like project management and graphic design.<br/><br> Campus Gotland is a very international campus and many of my classmates came from all over the world, which gave me a feel for what it’s like to work with people from different countries and cultures and I believe this experience will be very useful to me in my future career.",
                 date: "Aug 2021-May 2024",
             },
             {
-                key: 2,
+                key: 3,
                 title: "San Diego State University",
                 subtitle: "Exchange Student in Computer Science",
                 description: "During my studies at Uppsala University, I spent a semester at San Diego State University as an exchange student. I took courses in Computer Science and Java programming to broaden my software development skills. In addition, I now have academic credits and a top grade in bowling!",
                 date: "Aug 2023-Dec 2023",
             },
             {
-                key: 3,
+                key: 4,
                 title: "NTI Gymnasiet",
                 subtitle: "Software Development with focus on Game Development",
                 description: "NTI Gymnasiet is a high school with a tech, science, and IT profile. I studied software development with a focus on game development. I learned programming in C# and how to use Unity and Unreal Engine.",
