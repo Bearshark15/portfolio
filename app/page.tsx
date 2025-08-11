@@ -47,7 +47,7 @@ export default function Home() {
                                     <Smile className={"h-16 w-16"}></Smile>
                                     <Heading3 className={"lg:text-2xl"}>About Me</Heading3>
                                     <Paragraph>
-                                        A cool, calm and collected programmer with a sharp eye for detail.
+                                        A programmer with a sharp eye for detail.
                                         Team player who loves to celebrate success together with others.
                                         Take pride in always delivering to the best of my ability.
                                     </Paragraph>
@@ -99,7 +99,7 @@ export default function Home() {
                             <Title id={"resume"} className={"text-center"}>Resume</Title>
                             <Heading1 className={"my-5"}>About Me</Heading1>
                             <Paragraph className={"xl:w-1/2"}>
-                                I am a 23-year-old Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and programming in May 2024.
+                                I am a Game Programmer based in Stockholm. I completed my bachelor’s degree in game design and programming in May 2024.
                                 I love the creative process of making games, where different skills and personalities come together.<br/><br/>
                                 As a programmer my job is to solve problems and make things work, and that’s what I love about it. My teammates know that I am reliable and do what is necessary to find a solution.
                                 As a person I take pride in always delivering to the best of my ability. I am also careful about details. Clean code is for example very satisfying. I like to make sure my code is as readable as I can make it. It not only looks nice, but it also makes it easier for others to understand.<br/><br/>

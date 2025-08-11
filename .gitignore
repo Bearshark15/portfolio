@@ -20,6 +20,7 @@
 *.pem
 .idea/
 .vscode/
+.fleet/
 
 # debug
 npm-debug.log*
